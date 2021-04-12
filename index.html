@@ -4,33 +4,48 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unit Converter</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="icon" href="icon.ico">
     <script>
         var myObj = { 
-        Length:{
-          "meter":[1,0],
-          "cm":[100,0],
-          "mm":[1000,0],
-          "inch":[39.37,0],
-          "Kilo Meter":[1/1000,0],
-          "foot":[3.281,0],
-          "mile":[1/1609,0],
-        },
-        Area:{
-          "Square Meter":[1,0],
-          "Square Mile":[1/2.59e+6,0],
-          "Square Kilo":[1/1e6,0],
-          "Square Yard":[1.196,0],
-          "Square Foot":[10.764,0],
-          "Square Inch":[1550,0],
-        },
-        Temperature:{
-          "Celsius":[1,0],
-          "Fahrenheit":[9/5,32],
-          "Kelvin":[1,273.15],
-        }
-      };
+          "Length":{
+            "meter":[1,0],
+            "cm":[100,0],
+            "mm":[1000,0],
+            "inch":[39.37,0],
+            "Kilo Meter":[1/1000,0],
+            "foot":[3.281,0],
+            "mile":[1/1609,0],
+          },
+          "Area":{
+            "Square Meter":[1,0],
+            "Square Mile":[1/2.59e+6,0],
+            "Square Kilo":[1/1e6,0],
+            "Square Yard":[1.196,0],
+            "Square Foot":[10.764,0],
+            "Square Inch":[1550,0],
+          },
+          "Temperature":{
+            "Celsius":[1,0],
+            "Fahrenheit":[9/5,32],
+            "Kelvin":[1,273.15],
+          },
+          "Energy":{
+            "Joule":[1,0],
+            "Kilocalorie":[1/4184,0],
+            "Kilojoule":[1/1000,0],
+            "Gram calorie":[1/4.184,0],
+            "Watt hour":[1/3600,0],
+            "Kilowatt hour":[1/3.6e+6,0],
+            "Electronvolt":[6.242e18,0],
+            "foot-pound":[1/1.356,0],
+          },
+          "Fuel Economy":{
+            "Miles per gallon":[1,0],
+            "Kilometer per liter":[1/2.352,0],
+          }
+        };
       
       function populatefunc(label,x){
         document.getElementById(label).innerHTML+='<option value="'+x+'">'+x+'</option>;';
