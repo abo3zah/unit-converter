@@ -4,114 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unit Converter</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=New+Tegomin">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <link rel="icon" href="icon.ico">
-    <script>
-        var myObj = { 
-          "Length":{
-            "meter":[1,0],
-            "cm":[100,0],
-            "mm":[1000,0],
-            "inch":[39.37,0],
-            "Kilo Meter":[1/1000,0],
-            "foot":[3.281,0],
-            "mile":[1/1609,0],
-          },
-          "Area":{
-            "Square Meter":[1,0],
-            "Square Mile":[1/2.59e+6,0],
-            "Square Kilo":[1/1e6,0],
-            "Square Yard":[1.196,0],
-            "Square Foot":[10.764,0],
-            "Square Inch":[1550,0],
-          },
-          "Temperature":{
-            "Celsius":[1,0],
-            "Fahrenheit":[9/5,32],
-            "Kelvin":[1,273.15],
-          },
-          "Energy":{
-            "Joule":[1,0],
-            "Kilocalorie":[1/4184,0],
-            "Kilojoule":[1/1000,0],
-            "Gram calorie":[1/4.184,0],
-            "Watt hour":[1/3600,0],
-            "Kilowatt hour":[1/3.6e+6,0],
-            "Electronvolt":[6.242e18,0],
-            "foot-pound":[1/1.356,0],
-          },
-          "Fuel Economy":{
-            "Miles per gallon":[1,0],
-            "Kilometer per liter":[1/2.352,0],
-          }
-        };
-      
-      function populatefunc(label,x){
-        document.getElementById(label).innerHTML+='<option value="'+x+'">'+x+'</option>;';
-      }
-      
-      function copyunitfunc(x) {
-        document.getElementById("unit_from_type").value = x.innerText;
-        changeunitfunc();
-      }
-
-      function populatedivfunc(x){
-        document.getElementById("result_div").innerHTML +='<div class="w3-row"><p class="w3-col s6 l6 w3-hover-light-gray w3-panel w3-border-0 w3-border-bottom w3-input" id="unit_to" name="unit_to">'+converstionfunc(x).toFixed(5)+'</p><p id="unit_to_type" class="w3-col s6 l6 w3-center" style="cursor: pointer;" onClick="copyunitfunc(this)">'+x+'</p></div>';
-      }
-      
-      function cleardivfunc(){
-        document.getElementById("result_div").innerHTML = '<div class="w3-row w3-center w3-gray w3-text-white w3-large" style="text-shadow:1px 1px 0 black">To</div>';
-      }
-      
-      function clearselectfunc(label){
-        document.getElementById(label).innerHTML="";
-      }
-      
-      function converstionfunc(x){
-        var unit_from, unit_to;
-      
-        // Get the value of the input field with id="numb"
-        unit_from = document.getElementById("unit_from").value;
-        unit_to = document.getElementById("unit_to");
-        factor_from = document.getElementById("unit_from_type").value;
-        factor_to = x;
-        measurement_type = document.getElementById("types").value;
-      
-        return ((unit_from-myObj[measurement_type][factor_from][1])/myObj[measurement_type][factor_from][0])*myObj[measurement_type][factor_to][0]+myObj[measurement_type][factor_to][1];
-      }
-      
-      function changeunitfunc(){
-        measurement_type = document.getElementById("types").value;
-        cleardivfunc();
-      
-        for (x in myObj[measurement_type]){
-          populatedivfunc(x);
-        }
-      }
-      
-      function loadlistfunc(){
-        measurement_type = document.getElementById("types").value;
-        clearselectfunc("unit_from_type");
-        
-        for (x in myObj[measurement_type]){
-          populatefunc("unit_from_type",x);
-        }
-      
-        changeunitfunc();
-      }
-      
-      function mainfunc() {
-        for (x in myObj){
-          populatefunc("types",x);
-        }
-        loadlistfunc();
-      }
-    </script>
   </head>
-  <body onload="mainfunc()">
+  <body>
     <svg width="100%" height="200">
       <defs>
         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -123,54 +22,40 @@
       <rect width="100%" height="100%" style="fill:url(#grad1)" />
       <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle" font-size="4em" font-family="cursive" fill="white">Unit Converter</text>
     </svg>
-    <form class="w3-container w3-mobile w3-padding-16">
+    <div class="w3-container w3-mobile w3-padding-16" ng-app="myConversionApp" ng-controller="myCtrl">
 
-      <!--Measurement-->
-      <div class="w3-container w3-col">
-        <div class="w3-row">
-          <select onchange="loadlistfunc()" id="types" name="types" class="w3-round w3-mobile w3-select w3-border">
-          </select>
-          <br>
-          <br>
-        </div>
+      <!--Unit Type-->
+      <div class="w3-container w3-row">
+        <select ng-change="loadUnits()" ng-model="unitType" ng-options="x for x in unitTypes" class="w3-col w3-round w3-mobile w3-select w3-border"></select>
       </div>
+
+      <br>
       
-      <div class="w3-container w3-col m5 l5">
+      <!-- Unit and Value -->
+      <div class="w3-container w3-col m6 l6">
           <div class="w3-row w3-center w3-gray w3-text-white w3-large" style="text-shadow:1px 1px 0 black">
             From
           </div>
           <div class="w3-row">
-            <input class="w3-half w3-hover-light-gray w3-panel w3-border-0 w3-border-bottom w3-input" oninput="changeunitfunc()" type="number" id="unit_from" name="unit_from" value="1">
-            <select oninput="changeunitfunc()" id="unit_from_type" class="w3-half w3-round w3-select w3-border">
-            </select>
+            <input class="w3-half w3-hover-light-gray w3-panel w3-border-0 w3-border-bottom w3-input" type="number" ng-model="valueFrom" id="unit_from">
+            <select id="unitFrom" class="w3-half w3-round w3-select w3-border" ng-change="fetchOtherUnits()" ng-model="unitFrom" ng-options="x for x in units"></select>
           </div>
-          
       </div>
 
-      <div class="w3-container w3-center w3-col l2 w3-hide-medium w3-hide-small">
-        <svg preserveAspectRatio="xMidYMid meet"  x="0"   y="0"  viewBox="0 0 150 100" width="200" height="100">
-          <g>
-            <path d="m0 20 h100 v-10 l20 15 l-20 15 v-10 h-100z" stroke="black" stroke-width="1px" fill="white" />
-            <path d="m115 50 h-100 v-10 l-20 15 l20 15 v-10 h100z" stroke="black" stroke-width="1px" fill="white" />
-          </g>
-        </svg>
+      <div id="result_div" class="w3-container w3-col m6 l6">
+        <div class="w3-row w3-center w3-gray w3-text-white w3-large" style="text-shadow:1px 1px 0 black">
+          To
+        </div>
+        <div class="w3-row" ng-repeat="(y,x) in otherUnits">
+          <span class="w3-input">{{x['name']}} : {{ calculate(x) }} {{x["symbol"]}}</span>
+        </div>
       </div>
 
-      <div class="w3-container w3-center w3-col m2 w3-hide-large w3-hide-small">
-        =
-      </div>
-
-      <div class="w3-container w3-center w3-col m2 w3-hide-large w3-hide-medium">
-        <br><br>
-      </div>
-
-      <div id="result_div" class="w3-container w3-col m5 l5">
-      </div>
-
-    </form>
+    </div>
 
     <footer>
       <h5 class="w3-center" style="font-family: New Tegomin;">Created with &#128151; by Abdulaziz</h5>
     </footer>
   </body>
+  <script src="script.js"></script>
 </html>
