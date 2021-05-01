@@ -14,7 +14,7 @@ function download(filename, text) {
 }
   
 // Start file download.
-download("hello.txt",JSON.stringify(unitData));
+download("hello.txt","Hi");
 
 var app = angular.module("myConversionApp", []);
 app.controller("myCtrl", function ($scope) {
