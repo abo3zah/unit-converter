@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <link rel="icon" href="icon.ico">
   </head>
-  <body>
+  <body ng-app="myConversionApp" ng-controller="myCtrl">
     <svg width="100%" height="200">
       <defs>
         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -27,7 +27,7 @@
 
     <br>
     
-    <div class="w3-container w3-mobile w3-padding-16" ng-app="myConversionApp" ng-controller="myCtrl">
+    <div class="w3-container w3-mobile w3-padding-16">
 
       <!--Unit Type-->
       <div class="w3-container w3-row">
