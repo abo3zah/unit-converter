@@ -6,7 +6,7 @@ app.controller("myCtrl",  ['$scope', '$http', '$filter', function ($scope, $http
     $scope.getHijriDate = function () {
         $scope.error = false;
         $.ajax({
-            url: "http://api.aladhan.com/gToH?date=" + $filter('date')($scope.inputDate, "dd-MM-yyyy"),
+            url: "https://api.aladhan.com/gToH?date=" + $filter('date')($scope.inputDate, "dd-MM-yyyy"),
             error: function (xhr) {
                 $scope.error = true;
                 $("#err").text("An error occured: " + xhr.status + " " + xhr.statusText);
