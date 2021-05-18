@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Date Converter</title>
     <link rel="stylesheet" href="css\style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
-    <script src="https://unpkg.com/moment-hijri@2.1.2/moment-hijri.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
     <link href="css\bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link rel="icon" href="icon.ico">
   </head>
-  <body ng-app="myConversionApp" ng-controller="myCtrl">
+  <body>
     
     <header>
       <svg width="100%" height="200">
@@ -29,7 +26,7 @@
       </svg>
     </header>
 
-    <div ng-include="'nav.htm'"></div>
+    <div w3-include-html="nav.htm"></div>
 
     <br>
     
@@ -54,6 +51,11 @@
       <h5 style="font-family: Arial;align-content: center;text-align: center;">Created with &#128151; by Abdulaziz</h5>
     </footer>
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
   <script src="js\bootstrap-hijri-datetimepicker.min.js"></script>
   <script src="js\scriptForDateConverter.js"></script>
+  <script>
+    w3.includeHTML();
+  </script>
 </html>
