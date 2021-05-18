@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Date Converter</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css\style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
     <script src="https://unpkg.com/moment-hijri@2.1.2/moment-hijri.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link href="css\bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link rel="icon" href="icon.ico">
   </head>
   <body ng-app="myConversionApp" ng-controller="myCtrl">
@@ -36,32 +37,23 @@
     <form name="myForm">
       <div class="grid-container">
         <div style="padding: 20px; margin: 20px; background-color: lightgray; border: 1px solid black;">
-          <input type="date" name="gInputDate" ng-model="gInputDate" placeholder="Enter the goergian date" min="1900-01-01" required>
-          <input type="button" ng-show="myForm.gInputDate.$valid" ng-click="getHijriDate()" value="Convert">
-          <p id="hShortDate" ng-hide="error"></p>
-          <p id="hLongDate" ng-hide="error"></p>
-          <p id="hErr" class="w3-panel w3-red" ng-show="error"></p>
+          <div class="input-group">
+            <input id='gpicker' type="text" style="width:100%" name="gInputDate" placeholder="الرجاء إدخال التاريخ الميلادي المراد تحويله" required>
+          </div>
+          <p style="text-align: right" id="hShortDate"></p>
         </div>
         <div style="padding: 20px; margin: 20px; background-color: lightgray; border: 1px solid black;">
-          <input type="date" name="hInputDate" ng-model="hInputDate" placeholder="Enter the higri date" required>
-          <input type="button" ng-show="myForm.hInputDate.$valid" ng-click="getGeogDate()" value="Convert">
-          <p id="gShortDate" ng-hide="error"></p>
-          <p id="gLongDate" ng-hide="error"></p>
-          <p id="gErr" class="w3-panel w3-red" ng-show="error"></p>
+          <div class="input-group">
+            <input id='hpicker' type="text" style="width:100%" name="hInputDate" placeholder="الرجاء إدخال التاريخ الهجري المراد تحويله" required>
+          </div>
+          <p style="text-align: right; text-orientation: sideways-right;" id="gShortDate"></p>
         </div>
       </div>
     </form>
-
-    <script>
-      moment.locale('ar-SA');// 2- Set the global locale to `ar-SA`
-      m = moment();
-      m.format('iYYYY/iM/iDهـ الموافق YYYY/M/Dم'); //3- use it normally 
-      console.log(m.format('iYYYY/iM/iD [is] YYYY/M/D'));
-      //١٤٣٧/٨/١٧هـ الموافق ٢٠١٦/٥/٢٤م
-    </script> 
     <footer>
-      <h5 style="font-family: New Tegomin Arial;align-content: center;text-align: center;">Created with &#128151; by Abdulaziz</h5>
+      <h5 style="font-family: Arial;align-content: center;text-align: center;">Created with &#128151; by Abdulaziz</h5>
     </footer>
   </body>
+  <script src="js\bootstrap-hijri-datetimepicker.min.js"></script>
   <script src="js\scriptForDateConverter.js"></script>
 </html>
