@@ -12,7 +12,6 @@ app.controller("myCtrl",  ['$scope', '$http', '$filter', function ($scope, $http
                 $("#hErr").text("An error occured: " + xhr.status + " " + xhr.statusText);
             },
             success: function (result) {
-                console.log(result);
                 $scope.error = false;
                 $("#hShortDate").text(result["data"]["hijri"]["date"])
                 $("#hLongDate").text(
@@ -34,7 +33,6 @@ app.controller("myCtrl",  ['$scope', '$http', '$filter', function ($scope, $http
                 $("#gErr").text("An error occured: " + xhr.status + " " + xhr.statusText);
             },
             success: function (result) {
-                console.log(result);
                 $scope.error = false;
                 $("#gShortDate").text(result["data"]["gregorian"]["date"])
                 $("#gLongDate").text(
