@@ -6,7 +6,6 @@
     <title>Date Converter</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=New+Tegomin">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -34,20 +33,27 @@
     
     <!-- Main Form -->
     <form name="myForm">
-      <div class="w3-container">
-        <div class="w3-row">
-          <input type="date" name="inputDate" ng-model="inputDate" class="w3-col s8 m10 l11 w3-input" placeholder="Enter the goergian date" min="1900-01-01" required>
-          <input type="button" ng-show="myForm.inputDate.$valid" class="w3-col s4 m2 l1 w3-button w3-blue w3-border w3-border-blue" ng-click="getHijriDate()" value="Convert">
+      <div class="grid-container">
+        <div style="padding: 20px; margin: 20px; background-color: lightgray; border: 1px solid black;">
+          <input style="width: 78%;" type="date" name="gInputDate" ng-model="gInputDate" placeholder="Enter the goergian date" min="1900-01-01" required>
+          <input style="width: 20%;" type="button" ng-show="myForm.gInputDate.$valid" ng-click="getHijriDate()" value="Convert">
+          <p id="hShortDate" ng-hide="error"></p>
+          <p id="hLongDate" ng-hide="error"></p>
+          <p id="hErr" class="w3-panel w3-red" ng-show="error"></p>
         </div>
-        <p id="shortDate" class="w3-input" ng-hide="error"></p>
-        <p id="longDate" class="w3-input" ng-hide="error"></p>
-        <p id="err" class="w3-panel w3-red" ng-show="error"></p>
+        <div style="padding: 20px; margin: 20px; background-color: lightgray; border: 1px solid black;">
+          <input style="width: 78%;" type="date" name="hInputDate" ng-model="hInputDate" placeholder="Enter the higri date" required>
+          <input style="width: 20%;" type="button" ng-show="myForm.hInputDate.$valid" ng-click="getGeogDate()" value="Convert">
+          <p id="gShortDate" ng-hide="error"></p>
+          <p id="gLongDate" ng-hide="error"></p>
+          <p id="gErr" class="w3-panel w3-red" ng-show="error"></p>
+        </div>
       </div>
     </form>
 
 
     <footer>
-      <h5 class="w3-center" style="font-family: New Tegomin;">Created with &#128151; by Abdulaziz</h5>
+      <h5 class="w3-center" style="font-family: New Tegomin Arial;">Created with &#128151; by Abdulaziz</h5>
     </footer>
   </body>
   <script src="scriptForDateConverter.js"></script>

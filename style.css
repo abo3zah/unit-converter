@@ -9,3 +9,9 @@
         font-size: 4vw;
     }
 }
+
+.grid-container {
+    display: grid;
+    grid-gap: 0px 0px;
+    grid-template-columns: 50% 50%;
+}
