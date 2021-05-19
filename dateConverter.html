@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html dir="rtl" lang="ar">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +24,7 @@
           </linearGradient>
         </defs>
         <rect width="100%" height="100%" style="fill:url(#grad1)" />
-        <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle" font-family="cursive" fill="white">Date Converter</text>
+        <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle" font-family="cursive" fill="white">تحويل التاريخ</text>
       </svg>
     </header>
 
@@ -34,27 +34,30 @@
     
     <!-- Main Form -->
     <form name="myForm">
-      <div class="row">
-        <div class="col-sm-12" style="background-color: hsl(0,0%,90%); border: 1px solid black;">
-          <h6>الميلادي => الهجري</h6>
+      <div class="row p-3 m-3">
+
+        <div class="col-sm-12 border border-dark bg-light">
+          <h6 class='text-right'>الميلادي => الهجري</h6>
           <div class="input-group">
-            <input class='text-primary' id='gpicker' type="text" style="width:100%" name="gInputDate" placeholder="الرجاء إدخال التاريخ الميلادي المراد تحويله" required>
+            <input class='text-primary form-control' id='gpicker' type="text" name="gInputDate" placeholder="الرجاء إدخال التاريخ الميلادي المراد تحويله" required>
           </div>
           <p style="text-align: right" id="hShortDate"></p>
         </div>
-        <div class="col-sm-12" style="background-color: hsl(0,0%,90%); border: 1px solid black;">
+
+        <div class="col-sm-12 border border-dark bg-light mt-3">
+          <h6 class='text-right'>الهجري => الميلادي</h6>
           <div class="input-group">
-            <input id='hpicker' type="text" style="width:100%" name="hInputDate" placeholder="الرجاء إدخال التاريخ الهجري المراد تحويله" required>
+            <input id='hpicker' class='text-primary form-control' type="text" name="hInputDate" placeholder="الرجاء إدخال التاريخ الهجري المراد تحويله" required>
           </div>
           <p style="text-align: right; text-orientation: sideways-right;" id="gShortDate"></p>
         </div>
+
       </div>
     </form>
 
 
-    <footer>
-      <h5 style="font-family: Arial;align-content: center;text-align: center;">Created with &#128151; by Abdulaziz</h5>
-    </footer>
+    <div w3-include-html="footer.htm"></div>
+
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
