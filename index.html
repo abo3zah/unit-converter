@@ -32,22 +32,22 @@
       <br>
       
       <!-- Unit and Value -->
-      <div class="container col">
-          <p class="row w3-center bg-light text-white">
+      <div class="container col-md-6">
+          <p class="row w3-center bg-dark text-white">
             From
           </p>
           <div class="row">
             <input class="col-md-6 table-hover form-control border border-dark" type="number" ng-model="valueFrom" id="unit_from">
-            <select id="unitFrom" class="w3-half w3-round w3-select w3-border" ng-change="fetchOtherUnits()" ng-model="unitFrom" ng-options="x for x in units"></select>
+            <select id="unitFrom" class="col-md-6 form-control border border-dark" ng-change="fetchOtherUnits()" ng-model="unitFrom" ng-options="x for x in units"></select>
           </div>
       </div>
 
-      <div id="result_div" class="w3-container w3-col m6 l6">
-        <div class="w3-row w3-center w3-gray w3-text-white w3-large" style="text-shadow:1px 1px 0 black">
+      <div id="result_div" class="container col-md-6">
+        <div class="row text-center bg-dark text-white" style="text-shadow:1px 1px 0 black">
           To
         </div>
-        <div class="w3-row" ng-repeat="(y,x) in otherUnits">
-          <span class="w3-input">{{x['name']}} : {{ calculate(x) }} {{x["symbol"]}}</span>
+        <div class="row" ng-repeat="(y,x) in otherUnits">
+          <span class="form-control">{{x['name']}} : {{ calculate(x) }} {{x["symbol"]}}</span>
         </div>
       </div>
 
@@ -55,5 +55,6 @@
 
     <div ng-include="'footer.htm'"></div>
   </body>
+  
   <script type="module" src="js\scriptForIndex.js"></script>
 </html>
