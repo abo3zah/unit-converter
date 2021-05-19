@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Date Converter</title>
     <link rel="stylesheet" href="css\style.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <link href="css\bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link rel="icon" href="icon.ico">
@@ -33,14 +32,15 @@
     
     <!-- Main Form -->
     <form name="myForm">
-      <div class="grid-container">
-        <div style="padding: 20px; margin: 20px; background-color: lightgray; border: 1px solid black;">
+      <div class="row">
+        <div class="col-sm-12" style="background-color: hsl(0,0%,90%); border: 1px solid black;">
+          <h6>الميلادي => الهجري</h6>
           <div class="input-group">
-            <input id='gpicker' type="text" style="width:100%" name="gInputDate" placeholder="الرجاء إدخال التاريخ الميلادي المراد تحويله" required>
+            <input class='text-primary' id='gpicker' type="text" style="width:100%" name="gInputDate" placeholder="الرجاء إدخال التاريخ الميلادي المراد تحويله" required>
           </div>
           <p style="text-align: right" id="hShortDate"></p>
         </div>
-        <div style="padding: 20px; margin: 20px; background-color: lightgray; border: 1px solid black;">
+        <div class="col-sm-12" style="background-color: hsl(0,0%,90%); border: 1px solid black;">
           <div class="input-group">
             <input id='hpicker' type="text" style="width:100%" name="hInputDate" placeholder="الرجاء إدخال التاريخ الهجري المراد تحويله" required>
           </div>
@@ -48,6 +48,8 @@
         </div>
       </div>
     </form>
+
+
     <footer>
       <h5 style="font-family: Arial;align-content: center;text-align: center;">Created with &#128151; by Abdulaziz</h5>
     </footer>

@@ -2,25 +2,10 @@
     body > header > svg > text {
         font-size: 8vw;
     }
-    input{
-        width:100%;
-    }
 }
 
 @media screen and (min-width: 851px) {
     body > header > svg > text {
         font-size: 4vw;
     }
-    input[type='date']{
-        width:78%;
-    }
-    input[type='button']{
-        width:20%;
-    }
-}
-
-.grid-container {
-    display: grid;
-    grid-gap: 0px 0px;
-    grid-template-columns: 50% 50%;
 }
