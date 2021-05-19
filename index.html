@@ -24,29 +24,27 @@
     
     <div class="container p-3">
 
-      <!--Unit Type-->
+      <!--  -->
       <div class="container row">
         <select ng-change="loadUnits()" ng-model="unitType" ng-options="x for x in unitTypes" class="col form-control border-dark border"></select>
       </div>
 
       <br>
       
-      <!-- Unit and Value -->
+      <!--  -->
       <div class="row">
-        <div class="container col-md-6">
-            <p class="row text-center bg-dark text-white">
-              من
-            </p>
-            <div class="row">
+
+        <div class="container col-md-5">
+            <div class="row text-center bg-dark text-white p-1 rounded">من</div>
+            <div class="row mt-1">
               <input class="col-md-6 p-1 table-hover form-control border border-dark" type="number" ng-model="valueFrom" id="unit_from">
               <select id="unitFrom" class="col-md-6 form-control border border-dark" ng-change="fetchOtherUnits()" ng-model="unitFrom" ng-options="x for x in units"></select>
             </div>
         </div>
-        <div id="result_div" class="container col-md-6 p-1">
-          <div class="row text-center bg-dark text-white" style="text-shadow:1px 1px 0 black">
-            إلى
-          </div>
-          <div class="row" ng-repeat="(y,x) in otherUnits">
+        
+        <div id="result_div" class="container col-md-5 p-1 rounded">
+          <div class="row text-center bg-dark text-white" style="text-shadow:1px 1px 0 black">إلى</div>
+          <div class="row mt-1" ng-repeat="(y,x) in otherUnits">
             <span class="form-control">{{x['name']}} : {{ calculate(x) }} {{x["symbol"]}}</span>
           </div>
         </div>
