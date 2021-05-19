@@ -4,37 +4,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unit Converter</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=New+Tegomin">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="css\bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link rel="icon" href="icon.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <link rel="stylesheet" href="css\style.css">
     <link rel="icon" href="icon.ico">
   </head>
   <body ng-app="myConversionApp" ng-controller="myCtrl">
-    <header>
-      <svg width="100%" height="200">
-        <defs>
-          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#0F2027" />
-            <stop offset="50%" style="stop-color:#203A43" />
-            <stop offset="100%" style="stop-color:#2C5364" />
-          </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" style="fill:url(#grad1)" />
-        <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle" font-size="4em" font-family="cursive" fill="white">Unit Converter</text>
-      </svg>
-    </header>
+
+    <div ng-include="'header.htm'"></div>
 
     <div ng-include="'nav.htm'"></div>
 
     <br>
     
-    <div class="w3-container w3-mobile w3-padding-16">
+    <div class="container p-3">
 
       <!--Unit Type-->
-      <div class="w3-container w3-row">
-        <select ng-change="loadUnits()" ng-model="unitType" ng-options="x for x in unitTypes" class="w3-col w3-round w3-mobile w3-select w3-border"></select>
+      <div class="container row">
+        <select ng-change="loadUnits()" ng-model="unitType" ng-options="x for x in unitTypes" class="col w3-round w3-mobile w3-select w3-border"></select>
       </div>
 
       <br>
