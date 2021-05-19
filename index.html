@@ -33,11 +33,11 @@
       
       <!-- Unit and Value -->
       <div class="container col">
-          <div class="row w3-center bg-light text-white w3-large" style="text-shadow:1px 1px 0 black">
+          <p class="row w3-center bg-light text-white">
             From
-          </div>
-          <div class="w3-row">
-            <input class="w3-half w3-hover-light-gray w3-panel w3-border-0 w3-border-bottom w3-input" type="number" ng-model="valueFrom" id="unit_from">
+          </p>
+          <div class="row">
+            <input class="col-md-6 table-hover form-control border border-dark" type="number" ng-model="valueFrom" id="unit_from">
             <select id="unitFrom" class="w3-half w3-round w3-select w3-border" ng-change="fetchOtherUnits()" ng-model="unitFrom" ng-options="x for x in units"></select>
           </div>
       </div>
