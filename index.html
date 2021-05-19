@@ -26,14 +26,14 @@
 
       <!--Unit Type-->
       <div class="container row">
-        <select ng-change="loadUnits()" ng-model="unitType" ng-options="x for x in unitTypes" class="col w3-round w3-mobile w3-select w3-border"></select>
+        <select ng-change="loadUnits()" ng-model="unitType" ng-options="x for x in unitTypes" class="col form-control border-dark border"></select>
       </div>
 
       <br>
       
       <!-- Unit and Value -->
-      <div class="w3-container w3-col m6 l6">
-          <div class="w3-row w3-center w3-gray w3-text-white w3-large" style="text-shadow:1px 1px 0 black">
+      <div class="container col">
+          <div class="row w3-center bg-light text-white w3-large" style="text-shadow:1px 1px 0 black">
             From
           </div>
           <div class="w3-row">
@@ -53,9 +53,7 @@
 
     </div>
 
-    <footer>
-      <h5 class="w3-center" style="font-family: New Tegomin;">Created with &#128151; by Abdulaziz</h5>
-    </footer>
+    <div ng-include="'footer.htm'"></div>
   </body>
   <script type="module" src="js\scriptForIndex.js"></script>
 </html>
