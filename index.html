@@ -35,16 +35,16 @@
       <div class="row">
         <div class="container col-md-6">
             <p class="row text-center bg-dark text-white">
-              From
+              من
             </p>
             <div class="row">
-              <input class="col-md-6 table-hover form-control border border-dark" type="number" ng-model="valueFrom" id="unit_from">
+              <input class="col-md-6 p-1 table-hover form-control border border-dark" type="number" ng-model="valueFrom" id="unit_from">
               <select id="unitFrom" class="col-md-6 form-control border border-dark" ng-change="fetchOtherUnits()" ng-model="unitFrom" ng-options="x for x in units"></select>
             </div>
         </div>
-        <div id="result_div" class="container col-md-6">
+        <div id="result_div" class="container col-md-6 p-1">
           <div class="row text-center bg-dark text-white" style="text-shadow:1px 1px 0 black">
-            To
+            إلى
           </div>
           <div class="row" ng-repeat="(y,x) in otherUnits">
             <span class="form-control">{{x['name']}} : {{ calculate(x) }} {{x["symbol"]}}</span>
