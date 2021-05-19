@@ -42,9 +42,9 @@
             </div>
         </div>
         
-        <div id="result_div" class="container col-md-5 p-1 rounded">
-          <div class="row text-center bg-dark text-white" style="text-shadow:1px 1px 0 black">إلى</div>
-          <div class="row mt-1" ng-repeat="(y,x) in otherUnits">
+        <div id="result_div" class="container col-md-5">
+          <div class="row text-center bg-dark text-white p-1 rounded" style="text-shadow:1px 1px 0 black">إلى</div>
+          <div class="row mt-1 border-dark" ng-repeat="(y,x) in otherUnits">
             <span class="form-control">{{x['name']}} : {{ calculate(x) }} {{x["symbol"]}}</span>
           </div>
         </div>
