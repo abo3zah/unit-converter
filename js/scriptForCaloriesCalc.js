@@ -16,17 +16,17 @@ $(document).ready(function() {
             if($('input[name="sex"]:checked').val() == "male"){
 
                 value = (10 * $("#weight").val()) + (6.25 * $("#height").val()) - (5 * $("#age").val()) + 5;
-                $('#BMR').text("معادلة حساب السعرات الحرارية معدل الأيض الساسي (BMR): " + value);
+                $('#BMR').text("معادلة حساب السعرات الحرارية معدل الأيض الساسي: " + value);
 
             } else {
 
                 value = (10 * $("#weight").val()) + (6.25 * $("#height").val()) - (5 * $("#age").val()) - 161;
-                $('#BMR').text("معادلة حساب السعرات الحرارية معدل الأيض الساسي (BMR): " + value);
+                $('#BMR').text("معادلة حساب السعرات الحرارية معدل الأيض الساسي: " + value);
 
             }
 
             value = parseInt($("#weight").val() / (($("#height").val()/100)**2));
-            $('#BMI').text("معادلة مؤشر كتلة الجسم (BMI): " + value);
+            $('#BMI').text("معادلة مؤشر كتلة الجسم: " + value);
         }
         
     })
