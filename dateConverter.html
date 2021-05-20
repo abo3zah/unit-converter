@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar">
+<html dir='rtl' lang='ar'>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Date Converter</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://www.w3schools.com/lib/w3.js"></script>
-    <link href="css\bootstrap-datetimepicker.min.css" rel="stylesheet" />
-    <link rel="icon" href="icon.ico">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
+    <script src='https://www.w3schools.com/lib/w3.js'></script>
+    <link href='css\bootstrap-datetimepicker.min.css' rel='stylesheet' />
+    <link rel='icon' href='icon.ico'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></script>
 
     <style>
       * {
@@ -24,36 +24,36 @@
   </head>
   <body>
     
-    <div w3-include-html="header.htm"></div>
+    <div w3-include-html='header.htm'></div>
 
-    <div w3-include-html="nav.htm"></div>
+    <div w3-include-html='nav.htm'></div>
 
     <br>
     
     <!-- Main Form -->
-    <form name="myForm">
-      <div class="row p-3 m-3">
+    <form name='myForm'>
+      <div class='row p-3 m-3'>
 
-        <div class="col-sm-12 border border-dark bg-light">
+        <div class='col-sm-12 border border-dark bg-light'>
           <h6 class='text-right'>الميلادي => الهجري</h6>
-          <div class="input-group">
-            <input class='text-primary form-control' id='gpicker' type="text" name="gInputDate" placeholder="الرجاء إدخال التاريخ الميلادي المراد تحويله" required>
+          <div class='input-group'>
+            <input class='text-primary form-control' id='gpicker' type='text' name='gInputDate' placeholder='الرجاء إدخال التاريخ الميلادي المراد تحويله' required>
           </div>
-          <p style="text-align: right" id="hShortDate"></p>
-          <p style="text-align: right"></p>
-          <p style="text-align: right"></p>
-          <p style="text-align: right"></p>
+          <p style='text-align: right' id='hShortDate'></p>
+          <p style='text-align: right'></p>
+          <p style='text-align: right'></p>
+          <p style='text-align: right'></p>
         </div>
 
-        <div class="col-sm-12 border border-dark bg-light mt-3">
+        <div class='col-sm-12 border border-dark bg-light mt-3'>
           <h6 class='text-right'>الهجري => الميلادي</h6>
-          <div class="input-group">
-            <input id='hpicker' class='text-primary form-control' type="text" name="hInputDate" placeholder="الرجاء إدخال التاريخ الهجري المراد تحويله" required>
+          <div class='input-group'>
+            <input id='hpicker' class='text-primary form-control' type='text' name='hInputDate' placeholder='الرجاء إدخال التاريخ الهجري المراد تحويله' required>
           </div>
-          <p style="text-align: right" id="gShortDate"></p>
-          <p style="text-align: right"></p>
-          <p style="text-align: right"></p>
-          <p style="text-align: right"></p>
+          <p style='text-align: right' id='gShortDate'></p>
+          <p style='text-align: right'></p>
+          <p style='text-align: right'></p>
+          <p style='text-align: right'></p>
         </div>
 
       </div>
@@ -62,13 +62,13 @@
     <br>
     <br>
 
-    <div w3-include-html="footer.htm"></div>
+    <div w3-include-html='footer.htm'></div>
 
   </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
-  <script src="js\bootstrap-hijri-datetimepicker.min.js"></script>
-  <script src="js\scriptForDateConverter.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js'></script>
+  <script src='js\bootstrap-hijri-datetimepicker.min.js'></script>
+  <script src='js\scriptForDateConverter.js'></script>
   <script>
     w3.includeHTML();
   </script>

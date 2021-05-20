@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html dir='rtl' lang='ar'>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>حاسب السعرات الحرارية</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
+    <script src='https://www.w3schools.com/lib/w3.js'></script>
+    <link href='css\bootstrap-datetimepicker.min.css' rel='stylesheet' />
+    <link rel='icon' href='icon.ico'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></script>
+
+    <style>
+      * {
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+
+      a:hover {
+        background-color: hsl(0,0%,30%);
+      }
+    </style>
+
+  </head>
+  <body>
+    
+    <div w3-include-html='header.htm'></div>
+
+    <div w3-include-html='nav.htm'></div>
+
+    <br>
+    
+    <!-- Main Form -->
+    <form name='myForm'>
+      <div class='row p-3 m-3'>
+
+        <div class='col-sm-12 border border-dark bg-light'>
+
+          <div class='input-group pt-3'>
+            <div class='input-group-append'>
+              <span class='input-group-text'>الوزن (كجم)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            <input class='text-primary form-control' id='weight' type='number' name='weight' placeholder='الوزن (كجم)' min='0' value='105' required>
+          </div>
+
+          <div class='input-group pt-3'>
+            <div class='input-group-append'>
+              <span class='input-group-text'>الطول (سم)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            <input class='text-primary form-control' id='height' type='number' name='height' placeholder='الطول (سم)' min='0' value='173' required>
+          </div>
+
+          <div class='input-group pt-3'>
+            <div class='input-group-append'>
+              <span class='input-group-text'>العمر&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            <input class='text-primary form-control' id='age' type='number' name='age' placeholder='العمر' min='0' value='32' required>
+          </div>
+
+          <div class='input-group pt-3'>
+            <div class='input-group-append'>
+              <span class='input-group-text'>الجنس&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+
+            <div class='custom-control custom-radio custom-control-inline'>
+              <input type='radio' class='custom-control-input' id='male' name='sex' value='male' checked>
+              <label class='custom-control-label' for='male'>ذكر</label>
+            </div>
+            
+            <div class='custom-control custom-radio custom-control-inline'>
+              <input type='radio' class='custom-control-input' id='female' name='sex' value='female'>
+              <label class='custom-control-label' for='female'>أنثى</label>
+            </div>
+          </div>
+
+          <button type='button' class='btn btn-primary'>حساب</button>
+
+          <p style='text-align: right' class='pt-3' id='BMI'>معادلة مؤشر كتلة الجسم (BMI):</p>
+          <p style='text-align: right' id='BMR'>معادلة حساب السعرات الحرارية معدل اليض الساسي (BMR):</p>
+        </div>
+      </div>
+    </form>
+
+    <br>
+    <br>
+
+    <div w3-include-html='footer.htm'></div>
+
+  </body>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+  <script src='js\scriptForCaloriesCalc.js'></script>
+  <script>
+    w3.includeHTML();
+  </script>
+</html>
