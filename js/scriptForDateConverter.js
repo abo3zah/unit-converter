@@ -1,3 +1,26 @@
+function printDate(x,result,target){
+    let end = new Date()
+    let diffInDays = parseInt((end.getTime()-x)/86400000);
+
+    // طباعة التاريخ المحول له
+    $(target).text(result);
+
+    // طباعة الفرق في الأيام
+    $(target).next().text("عدد الأيام إلى هذه اللحظة: " + diffInDays + " يوم");
+
+    //الحساب بالميلادي
+    let years = parseInt(diffInDays / 365);
+    let months = parseInt(((diffInDays/365)-years)*12);
+    let days = diffInDays - (years*365) - (months * 31);
+    $(target).next().next().text("الفرق بالميلادي إلى هذه اللحظة: " + years + " سنة و  " + months + " شهر و  " + days + " يوم");
+
+    // الحساب بالهجري
+    years = parseInt(diffInDays / 354);
+    months = parseInt(((diffInDays/354)-years)*12);
+    days = diffInDays - (years*354) - (months * 30);
+    $(target).next().next().next().text("الفرق بالهجري إلى هذه اللحظة: " + years + " سنة و  " + months + " شهر و  " + days + " يوم");
+}
+
 $(function () {
     $('#hpicker').hijriDatePicker({
         hijri: true,
@@ -24,7 +47,8 @@ $("#hpicker").on('dp.change', function (arg) {
         return;
     };
     let date = arg.date;
-    $("#gShortDate").text("التاريخ الميلادي :" + date.format("dddd,     D / MMMM (M) / YYYY") + " م");
+    let result = "التاريخ الميلادي :" + date.format("dddd,     D / MMMM (M) / YYYY") + " م"
+    printDate(date.format('x'),result, "#gShortDate");
 });
 
 $("#gpicker").on('dp.change', function (arg) {
@@ -33,5 +57,6 @@ $("#gpicker").on('dp.change', function (arg) {
         return;
     };
     let date = arg.date;
-    $("#hShortDate").text("التاريخ الهجري :" + date.format("dddd, iD / iMMMM (iM) / iYYYY") + " هـ");
+    let result = "التاريخ الهجري :" + date.format("dddd, iD / iMMMM (iM) / iYYYY") + " هـ"
+    printDate(date.format('x'),result, "#hShortDate");
 });
