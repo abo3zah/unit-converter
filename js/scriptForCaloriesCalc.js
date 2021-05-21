@@ -29,7 +29,7 @@ $(document).ready(function () {
 
         }
 
-        value = parseInt($("#weight").val() / (($("#height").val() / 100) ** 2));
+        value = ($("#weight").val() / (($("#height").val() / 100) ** 2)).toFixed(1);
 
         if (value < 18.5){
 
