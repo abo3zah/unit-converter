@@ -10,10 +10,6 @@ $(document).ready(function () {
                 valid = false;
                 $('#BMR').text("معادلة حساب السعرات الحرارية معدل الأيض الساسي: ");
                 $('#BMI').text("معادلة مؤشر كتلة الجسم: ");
-                $("#bar").css("width", "0%");
-                $("#bar").next().css("width", "0%");
-                $("#bar").next().next().css("width", "0%");
-                $("#bar").next().next().next().css("width", "0%");
                 $("path").attr("visibility","hidden")
             }
         })
@@ -36,7 +32,7 @@ $(document).ready(function () {
 
             value = ($("#weight").val() / (($("#height").val() / 100) ** 2)).toFixed(1);
 
-            $("g").attr("transform","translate(" + (($("#indicator")[0].clientWidth*(1-(Math.min(value,40)/40)))-10) + ",0)")
+            $("g").attr("transform","translate(" + (($("#indicator")[0].clientWidth*(1-((Math.max(Math.min(value,40),5)-5)/35)))-10) + ",0)")
 
             if (value < 18.5) {
 
