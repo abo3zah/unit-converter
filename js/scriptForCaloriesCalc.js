@@ -1,7 +1,6 @@
 $(document).ready(function () {
     $('button').click(function () {
 
-
         let valid = true;
         $("input[required]").each(function () {
             if ($(this).val() > 0) {
@@ -15,10 +14,14 @@ $(document).ready(function () {
                 $("#bar").next().css("width", "0%");
                 $("#bar").next().next().css("width", "0%");
                 $("#bar").next().next().next().css("width", "0%");
+                $("path").attr("visibility","hidden")
             }
         })
 
         if (valid) {
+
+            $("path").attr("visibility","visible")
+
             if ($('input[name="sex"]:checked').val() == "male") {
 
                 value = (10 * $("#weight").val()) + (6.25 * $("#height").val()) - (5 * $("#age").val()) + 5;
@@ -33,41 +36,23 @@ $(document).ready(function () {
 
             value = ($("#weight").val() / (($("#height").val() / 100) ** 2)).toFixed(1);
 
+            $("g").attr("transform","translate(" + (($("#indicator")[0].clientWidth*(1-(Math.min(value,40)/40)))-10) + ",0)")
+
             if (value < 18.5) {
 
-                barwidth = 25*value/18.5;
                 value += " - نقص في الوزن";
-                $("#bar").css("width", barwidth + "%");
-                $("#bar").next().css("width", "0%");
-                $("#bar").next().next().css("width", "0%");
-                $("#bar").next().next().next().css("width", "0%");
-
+                
             } else if (value < 25) {
 
-                barwidth = 25*(value-18.5)/6.5;
-                value += " - وزن صحي";
-                $("#bar").css("width", "25%");
-                $("#bar").next().css("width", barwidth + "%");
-                $("#bar").next().next().css("width", "0%");
-                $("#bar").next().next().next().css("width", "0%");
+                value += " - وزن صحي";                
 
             } else if (value < 30) {
 
-                barwidth = 25*(value-25)/5;
                 value += " - وزن زائد";
-                $("#bar").css("width", "25%");
-                $("#bar").next().css("width", "25%");
-                $("#bar").next().next().css("width", barwidth + "%");
-                $("#bar").next().next().next().css("width", "0%");
 
             } else {
 
-                barwidth = Math.min(25*(value-30)/10,25);
                 value += " - سمنة";
-                $("#bar").css("width", "25%");
-                $("#bar").next().css("width", "25%");
-                $("#bar").next().next().css("width", "25%");
-                $("#bar").next().next().next().css("width", barwidth + "%");
 
             }
 
