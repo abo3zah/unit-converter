@@ -39,25 +39,24 @@ $(document).ready(function () {
 
             if (value < 18.5) {
 
-                value += " - نقص في الوزن";
+                value += " - <span class='px-2' style='background-color:yellow;color:black'>نقص في الوزن</span>";
                 
             } else if (value < 25) {
 
-                value += " - وزن صحي";                
+                value += " - <span class='px-2' style='background-color:green;color:white'>وزن صحي</span>";                
 
             } else if (value < 30) {
 
-                value += " - وزن زائد";
+                value += " - <span class='px-2' style='background-color:red;color:white'>وزن زائد</span>";
 
             } else {
 
-                value += " - سمنة";
+                value += " - <span class='px-2' style='background-color:brown;color:white'>سمنة</span>";
 
             }
 
-            value += " - الوزن الصحي بين " + minWeight + " - " + maxWeight + " كجم"
-
-            $('#BMI').text("معادلة مؤشر كتلة الجسم: " + value);
+            $('#BMI').html("<b>معادلة مؤشر كتلة الجسم</b>: " + value);
+            $('#BMI').next().html("<b>الوزن الصحي بين</b>: " + minWeight + " - " + maxWeight + " كجم")
         }
 
     })
