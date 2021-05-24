@@ -34,6 +34,9 @@ $(document).ready(function () {
 
             $("g").attr("transform","translate(" + (($("#indicator")[0].clientWidth*(1-((Math.max(Math.min(value,40),5)-5)/35)))-10) + ",0)")
 
+            maxWeight = (25*(($("#height").val() / 100) ** 2)).toFixed(0)
+            minWeight = (18.5*(($("#height").val() / 100) ** 2)).toFixed(0)
+
             if (value < 18.5) {
 
                 value += " - نقص في الوزن";
@@ -51,6 +54,8 @@ $(document).ready(function () {
                 value += " - سمنة";
 
             }
+
+            value += " - الوزن الصحي بين " + minWeight + " و " + maxWeight + " كجم"
 
             $('#BMI').text("معادلة مؤشر كتلة الجسم: " + value);
         }
