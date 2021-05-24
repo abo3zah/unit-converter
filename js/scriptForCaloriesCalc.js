@@ -55,7 +55,7 @@ $(document).ready(function () {
 
             }
 
-            value += " - الوزن الصحي بين " + minWeight + " و " + maxWeight + " كجم"
+            value += " - الوزن الصحي بين " + minWeight + " - " + maxWeight + " كجم"
 
             $('#BMI').text("معادلة مؤشر كتلة الجسم: " + value);
         }
