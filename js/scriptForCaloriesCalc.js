@@ -21,12 +21,12 @@ $(document).ready(function () {
             if ($('input[name="sex"]:checked').val() == "male") {
 
                 value = (10 * $("#weight").val()) + (6.25 * $("#height").val()) - (5 * $("#age").val()) + 5;
-                $('#BMR').text("معادلة حساب السعرات الحرارية معدل الأيض الساسي: " + value);
+                $('#BMR').html("<b>معادلة حساب السعرات الحرارية معدل الأيض الساسي: </b>" + value);
 
             } else {
 
                 value = (10 * $("#weight").val()) + (6.25 * $("#height").val()) - (5 * $("#age").val()) - 161;
-                $('#BMR').text("<b>معادلة حساب السعرات الحرارية معدل الأيض الساسي: </b>" + value);
+                $('#BMR').html("<b>معادلة حساب السعرات الحرارية معدل الأيض الساسي: </b>" + value);
 
             }
 
