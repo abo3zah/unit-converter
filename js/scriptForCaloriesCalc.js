@@ -4,12 +4,12 @@ $(document).ready(function () {
         let valid = true;
         $("input[required]").each(function () {
             if ($(this).val() > 0) {
-                $(this).removeClass("bg-danger");
+
             } else {
-                $(this).addClass("bg-danger");
                 valid = false;
-                $('#BMR').text("معادلة حساب السعرات الحرارية معدل الأيض الساسي: ");
-                $('#BMI').text("معادلة مؤشر كتلة الجسم: ");
+                $('#BMR').html("<b>معادلة حساب السعرات الحرارية معدل الأيض الساسي: </b>");
+                $('#BMI').html("<b>معادلة مؤشر كتلة الجسم</b>: ");
+                $('#BMI').next().html("<b>الوزن الصحي بين</b>: ")
                 $("path").attr("visibility","hidden")
             }
         })
@@ -26,7 +26,7 @@ $(document).ready(function () {
             } else {
 
                 value = (10 * $("#weight").val()) + (6.25 * $("#height").val()) - (5 * $("#age").val()) - 161;
-                $('#BMR').text("معادلة حساب السعرات الحرارية معدل الأيض الساسي: " + value);
+                $('#BMR').text("<b>معادلة حساب السعرات الحرارية معدل الأيض الساسي: </b>" + value);
 
             }
 
