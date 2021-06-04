@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir='rtl' lang='ar'>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>المجال و النطاق</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
+    <script src='https://www.w3schools.com/lib/w3.js'></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <link rel='icon' href='icon.ico'>
+
+    <style>
+      * {
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+
+      a:hover {
+        background-color: hsl(0,0%,30%);
+      }
+
+      input:invalid{
+        background-color: yellow;
+      }
+    </style>
+
+  </head>
+  <body>
+    
+    <div w3-include-html='header.htm'></div>
+
+    <div w3-include-html='nav.htm'></div>
+
+    <br>
+    
+    <!-- Main Form -->
+    <form name='myForm'>
+      <div class='row p-3 m-3'>
+
+        <div class='col-sm-12 border border-dark bg-light'>
+
+          <div class='input-group pt-3'>
+            <div class='input-group-append'>
+              <span class='input-group-text'>المجال&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            <input tabindex="1" class='text-primary form-control' id='range' type='text' name='range' value='0,4096' onchange='calc()' placeholder='رقمين مفصولين بفاصلة' required>
+          </div>
+
+          <div class='input-group pt-3'>
+            <div class='input-group-append'>
+              <span class='input-group-text'>المجال&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            <input tabindex="1" class='text-primary form-control' id='domain' type='text' name='domain' value='0,100' onchange='calc()' placeholder='رقمين مفصولين بفاصلة' required>
+          </div>
+
+        <p style='text-align: right' class='pt-3' id='result'><b>النتيجة</b>:</p>
+
+        
+        </div>
+      </div>
+    </form>
+
+    <br>
+    <br>
+
+    <div w3-include-html='footer.htm'></div>
+
+  </body>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+  <script>
+    w3.includeHTML();
+  </script>
+  <script>
+    let scale = d3.scaleLinear();
+    
+
+    function calc(){
+
+      scale.domain([0,4096]);
+      scale.range([0,100]);
+
+      console.log(scale(document.querySelector("#range").value));
+    }
+  </script>
+</html>
