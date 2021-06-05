@@ -88,7 +88,7 @@
             <div class='input-group-append'>
               <span class='input-group-text'>الرقم المراد تحويله&nbsp;</span>
             </div>
-            <input class="text-primary form-control" tabindex="5" class='text-primary' id='inputNumber' type='number' name='inputNumber' value='0' onchange='calc()' placeholder='' title="الرقم المراد تحويله" required>
+            <input class="text-primary form-control" tabindex="5" class='text-primary' id='inputNumber' type='number' name='inputNumber' value='25' onchange='calc()' placeholder='' title="الرقم المراد تحويله" required>
           </div>
         </div>
       </div>
@@ -120,8 +120,8 @@
     let domainLow = document.querySelector("#domainLow").value
     let domainHigh = document.querySelector("#domainHigh").value
 
-    scale.domain([rangeLow, rangeHigh]);
-    scale.range([domainLow, domainHigh]);
+    scale.domain([rangeLow, rangeHigh])
+      .range([domainLow, domainHigh]);
 
     document.querySelector("#result").innerHTML =  scale(document.querySelector("#inputNumber").value)
   }
