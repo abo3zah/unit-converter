@@ -5,7 +5,10 @@
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <title>المجال و النطاق</title>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src='https://www.w3schools.com/lib/w3.js'></script>
   <script src="https://d3js.org/d3.v6.min.js"></script>
   <link rel='icon' href='icon.ico'>
@@ -35,72 +38,96 @@
   <br>
 
   <!-- Main Form -->
-  <form name='myForm'>
-    <div class='row p-3 m-3'>
-      <div class='col-sm-12'>
-
-        <div class="col-sm-6 float-right p-3 border border-dark bg-light">
-
-          <h4 class="text-center bg-secondary text-white">المجال</h4>
-
-          <div class='input-group'>
-            <div class='input-group-append'>
-              <span class='input-group-text'>الأدنى&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            </div>
-            <input tabindex="1" class='form-control text-primary' id='rangeLow' type='number' name='rangeLow' value='0' onchange='calc()' placeholder='الرقم الأدنى' title="الأدنى" required>
+  <!-- configuration -->
+  <div class='col-sm-12'>
+    <div class="row px-3">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h5 class='text-center'>المجال</h5>
           </div>
-
-          <div class='input-group'>
-            <div class='input-group-append'>
-              <span class='input-group-text'>الأعلى&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <div class="card-body">
+            <div class='input-group'>
+              <div class='input-group-append'>
+                <span
+                  class='input-group-text'>الأدنى&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              </div>
+              <input tabindex="1" class='form-control text-primary' id='rangeLow' type='number' name='rangeLow' value='0'
+                onchange='calc()' placeholder='الرقم الأدنى' title="الأدنى" required>
             </div>
-            <input tabindex="2" class='form-control text-primary' id='rangeHigh' type='number' name='rangeHigh' value='100' onchange='calc()' placeholder='الرقم الأعلى' title="الأعلى" required>
-          </div>
-        </div>
-
-        <div class="col-sm-6 float-left p-3 border border-dark bg-light">
-
-          <h4 class="text-center bg-secondary text-white">النطاق</h4>
-
-          <div class='input-group'>
-            <div class='input-group-append'>
-              <span class='input-group-text'>الأدنى&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <div class='input-group'>
+              <div class='input-group-append'>
+                <span
+                  class='input-group-text'>الأعلى&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              </div>
+              <input tabindex="2" class='form-control text-primary' id='rangeHigh' type='number' name='rangeHigh'
+                value='100' onchange='calc()' placeholder='الرقم الأعلى' title="الأعلى" required>
             </div>
-            <input tabindex="3" class='form-control text-primary' id='domainLow' type='number' name='domainLow' value='4' onchange='calc()' placeholder='الرقم الأدنى' title="الأدنى" required>
-          </div>
-
-          <div class='input-group'>
-            <div class='input-group-append'>
-              <span class='input-group-text'>الأعلى&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            </div>
-            <input tabindex="4" class='form-control text-primary' id='domainHigh' type='number' name='domainHigh' value='20' onchange='calc()' placeholder='الرقم الأعلى' title="الأعلى" required>
           </div>
         </div>
       </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h5 class='text-center'>النطاق</h5>
+          </div>
+          <div class="card-body">
+            <div class='input-group'>
+              <div class='input-group-append'>
+                <span
+                  class='input-group-text'>الأدنى&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              </div>
+              <input tabindex="3" class='form-control text-primary' id='domainLow' type='number' name='domainLow'
+                value='4' onchange='calc()' placeholder='الرقم الأدنى' title="الأدنى" required>
+            </div>
+            <div class='input-group'>
+              <div class='input-group-append'>
+                <span
+                  class='input-group-text'>الأعلى&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              </div>
+              <input tabindex="4" class='form-control text-primary' id='domainHigh' type='number' name='domainHigh'
+                value='20' onchange='calc()' placeholder='الرقم الأعلى' title="الأعلى" required>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <div class='col-sm-12 mt-3'>
+  </div>
 
-        <div class="p-3 border border-dark bg-light">
-
-          <h4 class="text-center bg-secondary text-white">رقم من المجال > رقم النطاق</h4>
-
+  <!-- User Entry -->
+  <div class="col-sm-12 mt-3">
+    <div class='col-sm-12'>
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h5 class='text-center text-white'>رقم من المجال > رقم النطاق</h5>
+        </div>
+        <div class="card-body">
           <div class='input-group'>
             <div class='input-group-append'>
               <span class='input-group-text'>الرقم المراد تحويله&nbsp;</span>
             </div>
-            <input class="text-primary form-control" tabindex="5" class='text-primary' id='inputNumber' type='number' name='inputNumber' value='25' onchange='calc()' placeholder='' title="الرقم المراد تحويله" required>
+            <input class="text-primary form-control" tabindex="5" class='text-primary' id='inputNumber' type='number'
+              name='inputNumber' value='25' onchange='calc()' placeholder='' title="الرقم المراد تحويله" required>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="col-sm-12 mt-3">
-        <div class='p-3 border border-dark bg-light'>
-          <h4 class="text-center bg-success text-white">النتيجة</h4>
+  <!-- result -->
+  <div class="col-sm-12 mt-3">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header bg-success">
+          <h5 class='text-center text-white'>النتيجة</h5>
+        </div>
+        <div class="card-body">
           <p id="result" class="text-center form-control text-info"></p>
         </div>
       </div>
     </div>
-  </form>
+  </div>
 
   <br>
   <br>
