@@ -36,8 +36,8 @@ const loadingFile = () => {
     dataFetch().then((data) => {
         d3.select("#dropDownGroup").selectAll('label').remove()
         d3.select("#dropDownGroup").selectAll('select').remove()
-        populate(data.columns, "xAxis: ", "xAxisColumn");
-        populate(['',...data.columns], "Color Column: ", "ColorColumn");
+        populate(data.columns, "المحور السيني ", "xAxisColumn");
+        populate(['',...data.columns], "لون الصناديق: ", "ColorColumn");
         document.querySelector("#xAxisColumn").selectedIndex = 0;
 
         draw();
@@ -59,7 +59,7 @@ const draw = () => {
 }
 
 //initalizing
-document.querySelector("#drawingWidth").value = document.body.clientWidth - 32;
+document.querySelector("#drawingWidth").value = document.body.clientWidth - 48;
 loadingFile()
 
 

@@ -72,7 +72,7 @@ function xAndYScale(data, xAxisC, yAxisC, bar, xScale, yScale, innerWidth, inner
     return [xScale, yScale, padding, yAxisFormat]
 }
 
-function drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, xTicksShow, yTicksShow, xAxisFormat, yAxisFormat, marginLeft, axisLabelSize, xAxisLabelText, yAxisLabelText, numOfBins=null) {
+function drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, xTicksShow, yTicksShow, xAxisFormat, yAxisFormat, axisLabelSize, xAxisLabelText, yAxisLabelText, numOfBins=null) {
     //select drawing area
     var g = d3.select('.drawingArea');
 
@@ -101,13 +101,13 @@ function drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, xT
             .tickSize(yTicksShow == true ? -innerWidth : 0)
             .tickFormat(yAxisFormat == "null" ? null : d3.format(yAxisFormat)))
         .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr('y', -30)
-        .attr('x', -(innerHeight / 2) + 30)
-        .attr("class", 'label')
-        .style('font-size', axisLabelSize + 'pt')
-        .text(yAxisLabelText)
-}
+            .attr("transform", "rotate(-90)")
+            .attr('y', -30)
+            .attr('x', -(innerHeight / 2) + 30)
+            .attr("class", 'label')
+            .style('font-size', axisLabelSize + 'pt')
+            .text(yAxisLabelText)
+    }
 
 function scatterDraw(dataPath, xAxisC, yAxisC, radiusData = "", radius = 5, colorData = "", color = "", xScaleSelection = 'scaleLinear', yScaleSelection = 'scaleLinear', xAxisFormat = null, yAxisFormat = null, opacitySet = 0.6, targetId = "#drawingArea", outerWidth = 500, outerHeight = 500, marginTop = 40, marginRight = 70, marginBottom = 60, marginLeft = 70, legendLocationSelection = "bottomRight", svgBackgroundColor = 'white', title = "", xTicksShow = true, yTicksShow = true) {
 
@@ -372,10 +372,6 @@ function histogramDraw(data, xAxisC, colorData = "", numOfBins = 70, color = "#6
     //select drawing area
     var g = d3.select('.drawingArea');
 
-    d3.select('svg').call(d3.zoom().on('zoom', e => {
-        g.attr('transform', e.transform);
-    }));
-
     function render(data) {
 
         xAxisMax==0 ? xAxisMax=d3.max(data, d => d[xAxisC]) : null
@@ -410,7 +406,7 @@ function histogramDraw(data, xAxisC, colorData = "", numOfBins = 70, color = "#6
 
         yScale.domain([0, d3.max(bins.flat(), d => d.length)*1.15]);
         
-        drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, false, false, "null", "null", marginLeft, axisLabelSize, xAxisLabelText, "", numOfBins)
+        drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, false, false, "null", "null", axisLabelSize, xAxisLabelText, "", numOfBins)
 
         i =0
         // append the bar rectangles to the g element
