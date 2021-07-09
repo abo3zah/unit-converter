@@ -100,6 +100,7 @@ function drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, xT
         .call(d3.axisLeft(yScale)
             .tickSize(yTicksShow == true ? -innerWidth : 0)
             .tickFormat(yAxisFormat == "null" ? null : d3.format(yAxisFormat)))
+        .attr('text-anchor','start')
         .append("text")
             .attr("transform", "rotate(-90)")
             .attr('y', -30)
@@ -107,7 +108,7 @@ function drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, xT
             .attr("class", 'label')
             .style('font-size', axisLabelSize + 'pt')
             .text(yAxisLabelText)
-    }
+}
 
 function scatterDraw(dataPath, xAxisC, yAxisC, radiusData = "", radius = 5, colorData = "", color = "", xScaleSelection = 'scaleLinear', yScaleSelection = 'scaleLinear', xAxisFormat = null, yAxisFormat = null, opacitySet = 0.6, targetId = "#drawingArea", outerWidth = 500, outerHeight = 500, marginTop = 40, marginRight = 70, marginBottom = 60, marginLeft = 70, legendLocationSelection = "bottomRight", svgBackgroundColor = 'white', title = "", xTicksShow = true, yTicksShow = true) {
 
@@ -431,7 +432,7 @@ function histogramDraw(data, xAxisC, colorData = "", numOfBins = 70, color = "#6
                 .append('text')
                     .attr('text-anchor', 'middle')
                     .attr('transform',d => 'translate(' + ((xScale(d.x1) - xScale(d.x0) - 1)/2) + ',-5)')
-                    .attr('font-weight','bold')
+                    .attr('font-size',12)
                     .text(d => d.length == 0 ? '' : d.length)
             i++;
         }
