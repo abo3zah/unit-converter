@@ -62,7 +62,7 @@ const draw = () => {
 }
 
 //initalizing
-document.querySelector("#drawingWidth").value = document.body.clientWidth - 32;
+document.querySelector("#drawingWidth").value = document.body.clientWidth - 48;
 loadingFile()
 
 

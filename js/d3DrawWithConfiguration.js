@@ -110,7 +110,8 @@ function drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, xT
             .text(yAxisLabelText)
 }
 
-function scatterDraw(dataPath, xAxisC, yAxisC, radiusData = "", radius = 5, colorData = "", color = "", xScaleSelection = 'scaleLinear', yScaleSelection = 'scaleLinear', xAxisFormat = null, yAxisFormat = null, opacitySet = 0.6, targetId = "#drawingArea", outerWidth = 500, outerHeight = 500, marginTop = 40, marginRight = 70, marginBottom = 60, marginLeft = 70, legendLocationSelection = "bottomRight", svgBackgroundColor = 'white', title = "", xTicksShow = true, yTicksShow = true) {
+function scatterDraw(dataPath, xAxisC, yAxisC, radiusData = "", radius = 5, colorData = "", color = "", xScaleSelection = 'scaleLinear',
+yScaleSelection = 'scaleLinear', xAxisFormat = null, yAxisFormat = null, opacitySet = 0.6, targetId = "#drawingArea", outerWidth = 500, outerHeight = 500, marginTop = 40, marginRight = 70, marginBottom = 60, marginLeft = 70, legendLocationSelection = "bottomRight", svgBackgroundColor = 'white', title = "", xTicksShow = true, yTicksShow = true) {
 
     ////preparing the xAxis Label
     var xAxisLabelText = xAxisC.split(/\.|_| /).map(d => d[0].toUpperCase() + d.slice(1)).join(" ");
@@ -138,7 +139,7 @@ function scatterDraw(dataPath, xAxisC, yAxisC, radiusData = "", radius = 5, colo
         [xScale, yScale, padding, yAxisFormat] = xAndYScale(data, xAxisC, yAxisC, false, xScaleSelection, yScaleSelection, innerWidth, innerHeight, yAxisFormat)
 
         //drawing Axises
-        drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, xTicksShow, yTicksShow, xAxisFormat, yAxisFormat, marginLeft, axisLabelSize, xAxisLabelText, yAxisLabelText)
+        drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, xTicksShow, yTicksShow, xAxisFormat, yAxisFormat, axisLabelSize, xAxisLabelText, yAxisLabelText)
 
         //defining the radius scale
         radiusData == "" ? rScale = radius : rScale = d3.scaleSqrt().range([0, 20]).domain([0, d3.max(data, d => d[radiusData])]);
@@ -160,13 +161,13 @@ function scatterDraw(dataPath, xAxisC, yAxisC, radiusData = "", radius = 5, colo
 
 
         if (colorData != "") {
-            var legend = d3.select('svg').selectAll(".legend")
+            var legend = g.selectAll(".legend")
                 .data(colorScale.domain());
 
             legend.enter()
                 .append('rect')
                 .attr("y", (d, i) => legendLocation[legendLocationSelection][0] + (legendLocation[legendLocationSelection][1] * i * 20))
-                .attr('x', outerWidth - 30)
+                .attr('x', innerWidth + 30)
                 .attr('width', 18)
                 .attr('height', 18)
                 .attr('onclick', 'highlightSelection(this, "' + targetId + '" ,"circle",' + opacitySet + ',"' + colorData + '")') //do function here
@@ -178,7 +179,7 @@ function scatterDraw(dataPath, xAxisC, yAxisC, radiusData = "", radius = 5, colo
 
             legend.enter()
                 .append('text')
-                .attr('x', outerWidth - 40)
+                .attr('x', innerWidth + 50)
                 .attr('y', (d, i) => legendLocation[legendLocationSelection][0] + (legendLocation[legendLocationSelection][1] * i * 20) + 8)
                 .attr('dy', '.35em')
                 .style('text-anchor', 'end')
@@ -257,7 +258,7 @@ function barDraw(data, xAxisC, yAxisC, targetId = "#drawingArea", outerWidth = 1
 
 }
 
-function violinDraw(data, xAxisC, yAxisC, targetId = "#drawingArea", outerWidth = 1000, outerHeight = 500, yAxisFormat = 'null', marginTop = 40, marginRight = 70, marginBottom = 60, marginLeft = 120, svgBackgroundColor = 'white', title = '', xTicksShow = false, yTicksShow = false) {
+function violinDraw(data, xAxisC, yAxisC, targetId = "#drawingArea", outerWidth = 1000, outerHeight = 500, yAxisFormat = 'null', marginTop = 40, marginRight = 70, marginBottom = 60, marginLeft = 70, svgBackgroundColor = 'white', title = '', xTicksShow = false, yTicksShow = false) {
 
     ////preparing the xAxis Label
     var xAxisLabelText = xAxisC.split(/\.|_| /).map(d => d[0].toUpperCase() + d.slice(1)).join(" ");
@@ -278,7 +279,7 @@ function violinDraw(data, xAxisC, yAxisC, targetId = "#drawingArea", outerWidth 
 
         xScale = xScale.padding(padding);
 
-        drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, xTicksShow, yTicksShow, "null", yAxisFormat, marginLeft, axisLabelSize, "", yAxisLabelText)
+        drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, xTicksShow, yTicksShow, "null", yAxisFormat, axisLabelSize, "", yAxisLabelText)
 
         // Features of the histogram
         var histogram = d3.histogram()
