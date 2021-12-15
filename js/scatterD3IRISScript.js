@@ -41,8 +41,6 @@ const loadingFile = () => {
         populate(["", ...data.columns], "Radius Column: ", "radiusColumn");
         populate(["", ...data.columns], "Color Column: ", "colorColumn");
 
-        document.getElementById("yAxisColumn").selectedIndex = 1;
-
         draw();
     });
 }

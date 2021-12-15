@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir='rtl' lang='ar'>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Date Converter</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="css\bootstrap-datetimepicker.min.css" rel="stylesheet" />
+  <link rel="icon" href="icon.ico">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css\countryCode.css">
+  <script src='https://www.w3schools.com/lib/w3.js'></script>
+
+  <style>
+    * {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    a:hover {
+      background-color: hsl(0, 0%, 30%);
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div w3-include-html='header.htm'></div>
+
+  <div w3-include-html='nav.htm'></div>
+
+  <br>
+
+  <!-- Main Form -->
+  <form name='myForm'>
+    <div class='row p-3 m-3'>
+
+      <div class='col-sm-6 border border-dark bg-light'>
+        <h6 class='text-right'>🚩الدولة</h6>
+
+        <div class='input-group'>
+          <input class='text-primary form-control' id='country' type='text' name='country' placeholder='اختر الدولة'
+            onkeyup="filterFunction('countryList')" onfocus="toggleDrop('countryList')" onblur="toggleDrop('countryList')" required>
+          <div id="countryList" class="dropdown-content">
+            <ul>About</ul>
+            <ul>Base</ul>
+            <ul>Blog</ul>
+            <ul>Contact</ul>
+            <ul>Custom</ul>
+            <ul>Support</ul>
+            <ul>Tools</ul>
+          </div>
+        </div>
+
+        <p style='text-align: right' id='callingCode'></p>
+        <p style='text-align: right'></p>
+        <p style='text-align: right'></p>
+        <p style='text-align: right'></p>
+      </div>
+
+      <div class='col-sm-6 border border-dark bg-light'>
+        <h6 class='text-right'>📅 الهجري => الميلادي</h6>
+        <div class='input-group'>
+          <input id='hpicker' class='text-primary form-control' type='text' name='hInputDate'
+            placeholder='الرجاء إدخال التاريخ الهجري المراد تحويله' required>
+        </div>
+        <p style='text-align: right' id='gShortDate'></p>
+        <p style='text-align: right'></p>
+        <p style='text-align: right'></p>
+        <p style='text-align: right'></p>
+        <br>
+      </div>
+
+    </div>
+  </form>
+
+  <br>
+  <br>
+
+  <div w3-include-html='footer.htm'></div>
+
+</body>
+<script src='js\countryCode.js'></script>
+<script>
+  w3.includeHTML();
+</script>
+
+</html>

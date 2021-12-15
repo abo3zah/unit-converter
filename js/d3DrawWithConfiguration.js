@@ -110,8 +110,7 @@ function drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, xT
             .text(yAxisLabelText)
 }
 
-function scatterDraw(dataPath, xAxisC, yAxisC, radiusData = "", radius = 5, colorData = "", color = "", xScaleSelection = 'scaleLinear',
-yScaleSelection = 'scaleLinear', xAxisFormat = null, yAxisFormat = null, opacitySet = 0.6, targetId = "#drawingArea", outerWidth = 500, outerHeight = 500, marginTop = 40, marginRight = 70, marginBottom = 60, marginLeft = 70, legendLocationSelection = "bottomRight", svgBackgroundColor = 'white', title = "", xTicksShow = true, yTicksShow = true) {
+function scatterDraw(dataPath, xAxisC, yAxisC, radiusData = "", radius = 5, colorData = "", color = "", xScaleSelection = 'scaleLinear', yScaleSelection = 'scaleLinear', xAxisFormat = null, yAxisFormat = null, opacitySet = 0.6, targetId = "#drawingArea", outerWidth = 500, outerHeight = 500, marginTop = 40, marginRight = 70, marginBottom = 60, marginLeft = 70, legendLocationSelection = "bottomRight", svgBackgroundColor = 'white', title = "", xTicksShow = true, yTicksShow = true) {
 
     ////preparing the xAxis Label
     var xAxisLabelText = xAxisC.split(/\.|_| /).map(d => d[0].toUpperCase() + d.slice(1)).join(" ");
@@ -158,7 +157,6 @@ yScaleSelection = 'scaleLinear', xAxisFormat = null, yAxisFormat = null, opacity
                 .text(data => '( ' + data[xAxisC] + ' , ' + data[yAxisC] + ' )')
             .exit()
             .remove();
-
 
         if (colorData != "") {
             var legend = g.selectAll(".legend")
@@ -356,23 +354,26 @@ function violinDraw(data, xAxisC, yAxisC, targetId = "#drawingArea", outerWidth 
 
 }
 
-function histogramDraw(data, xAxisC, colorData = "", numOfBins = 70, color = "#69b3a2", xAxisMax=0,targetId = "#drawingArea",outerWidth = 1000, outerHeight = 500,marginTop = 40, marginRight = 70, marginBottom = 60, marginLeft = 70, svgBackgroundColor = 'white', title = '') {
+function histogramDraw(data, xAxisC, colorData = "", numOfBins = 70, color = "#69b3a2", xAxisMax=0,targetId = "#drawingArea",outerWidth = 1000, outerHeight = 500,marginTop = 40, marginRight = 150, marginBottom = 60, marginLeft = 70, svgBackgroundColor = 'white', title = '', legendLocationSelection = "topRight", opacitySet = 0.6) {
 
     var xAxisLabelText = xAxisC.split(/\.|_| /).map(d => d[0].toUpperCase() + d.slice(1)).join(" ");
 
-    
-    // set the dimensions and margins of the graph
-    innerWidth = outerWidth - marginLeft - marginRight,
-    innerHeight = outerHeight - marginTop - marginBottom;
-
     //general preparation
     title == "" ? title = "Distribution for " + xAxisLabelText : null
-
     var [innerHeight, innerWidth, tickFontSize, axisLabelSize] = preparationFunction(targetId, title, outerWidth, outerHeight, marginTop, marginRight, marginBottom, marginLeft, svgBackgroundColor);
 
 
     //select drawing area
     var g = d3.select('.drawingArea');
+
+    //defining the colorScale
+    colorData == "" ? colorScale = color : colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+    //defining the legend location
+    var legendLocation = {
+        topRight: [marginTop, 1],
+        bottomRight: [innerHeight, -1]
+    }
 
     function render(data) {
 
@@ -402,6 +403,8 @@ function histogramDraw(data, xAxisC, colorData = "", numOfBins = 70, color = "#6
                 bins.push(histogram(data.filter( d => d[colorData] == c)));
             }
         }
+
+
         // Y axis: scale and draw:
         var yScale = d3.scaleLinear()
             .range([innerHeight, 0]);
@@ -409,6 +412,8 @@ function histogramDraw(data, xAxisC, colorData = "", numOfBins = 70, color = "#6
         yScale.domain([0, d3.max(bins.flat(), d => d.length)*1.15]);
         
         drawingAxises(innerHeight, innerWidth, tickFontSize, xScale, yScale, false, false, "null", "null", axisLabelSize, xAxisLabelText, "", numOfBins)
+
+        console.log(bins);
 
         i =0
         // append the bar rectangles to the g element
@@ -427,7 +432,7 @@ function histogramDraw(data, xAxisC, colorData = "", numOfBins = 70, color = "#6
                 .attr("height", d => innerHeight - yScale(d.length))
                 .attr('ry',2)
                 .attr("opacity", typeof colorScale == "string" ? 1 : 0.5)
-                .attr('fill', data => typeof colorScale == "string" ? colorScale : colorScale(i))
+                .attr('fill', d => typeof colorScale == "string" ? colorScale : d[0] == undefined ? null : colorScale(d[0]['Class']))
             
             shapes
                 .append('text')
@@ -435,8 +440,40 @@ function histogramDraw(data, xAxisC, colorData = "", numOfBins = 70, color = "#6
                     .attr('transform',d => 'translate(' + ((xScale(d.x1) - xScale(d.x0) - 1)/2) + ',-5)')
                     .attr('font-size',12)
                     .text(d => d.length == 0 ? '' : d.length)
+          
             i++;
+
         }
+
+        if (colorData != "") {
+            var legend = g.selectAll(".legend")
+                .data(colorScale.domain());
+
+            legend.enter()
+                .append('rect')
+                .attr("y", (d, i) => legendLocation[legendLocationSelection][0] + (legendLocation[legendLocationSelection][1] * i * 20))
+                .attr('x', innerWidth + 30)
+                .attr('width', 18)
+                .attr('height', 18)
+                .attr('class', d => d)
+                .attr('fill', colorScale)
+                .exit()
+                .remove();
+
+            legend.enter()
+                .append('text')
+                .attr('x', innerWidth + 50)
+                .attr('y', (d, i) => legendLocation[legendLocationSelection][0] + (legendLocation[legendLocationSelection][1] * i * 20) + 8)
+                .attr('dy', '.35em')
+                .style('text-anchor', 'end')
+                .text(function (d, i) {
+                    return d;
+                })
+                .exit()
+                .remove();
+        }
+
+
     }
 
     // get the data

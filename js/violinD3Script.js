@@ -39,9 +39,6 @@ const loadingFile = () => {
         populate(data.columns, "xAxis: ", "xAxisColumn");
         populate(data.columns, "yAxis: ", "yAxisColumn");
 
-        document.querySelector("#xAxisColumn").selectedIndex = 4;
-        document.querySelector("#yAxisColumn").selectedIndex = 0;
-
         draw();
     });
 }
