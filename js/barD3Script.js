@@ -55,7 +55,7 @@ const draw = () => {
         document.querySelector("#drawingWidth").value,
         document.querySelector("#drawingHeight").value,
         document.querySelector("#yAxisTickFormat").value,
-        undefined,undefined,undefined,undefined,
+        undefined, undefined, undefined, undefined,
         document.querySelector('#svgBackgroundColor').value,
         document.querySelector('#title').value
     )
@@ -64,6 +64,3 @@ const draw = () => {
 //initalizing
 document.querySelector("#drawingWidth").value = document.body.clientWidth - 32;
 loadingFile()
-
-
-

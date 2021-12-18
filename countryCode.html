@@ -32,27 +32,18 @@
 
   <div w3-include-html='nav.htm'></div>
 
-  <br>
 
   <!-- Main Form -->
   <form name='myForm'>
     <div class='row p-3 m-3'>
 
-      <div class='col-sm-6 border border-dark bg-light'>
+      <div class='col-sm-6 border border-dark bg-light' onblur="hideDropdownList('countryList')">
         <h6 class='text-right'>🚩الدولة</h6>
 
         <div class='input-group'>
           <input class='text-primary form-control' id='country' type='text' name='country' placeholder='اختر الدولة'
-            onkeyup="filterFunction('countryList')" onfocus="toggleDrop('countryList')" onblur="toggleDrop('countryList')" required>
-          <div id="countryList" class="dropdown-content">
-            <ul>About</ul>
-            <ul>Base</ul>
-            <ul>Blog</ul>
-            <ul>Contact</ul>
-            <ul>Custom</ul>
-            <ul>Support</ul>
-            <ul>Tools</ul>
-          </div>
+            onkeyup="filterFunction('countryList','country')" onfocus='showDropdownList("countryList")'  required>
+          <div id="countryList" class="dropdown-content"></div>
         </div>
 
         <p style='text-align: right' id='callingCode'></p>
@@ -67,6 +58,7 @@
           <input id='hpicker' class='text-primary form-control' type='text' name='hInputDate'
             placeholder='الرجاء إدخال التاريخ الهجري المراد تحويله' required>
         </div>
+
         <p style='text-align: right' id='gShortDate'></p>
         <p style='text-align: right'></p>
         <p style='text-align: right'></p>
@@ -83,6 +75,7 @@
   <div w3-include-html='footer.htm'></div>
 
 </body>
+<script src="https://d3js.org/d3.v6.min.js"></script>
 <script src='js\countryCode.js'></script>
 <script>
   w3.includeHTML();
