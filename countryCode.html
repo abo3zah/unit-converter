@@ -4,7 +4,7 @@
 <head>
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>Date Converter</title>
+  <title>Country Inforamtion</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="css\bootstrap-datetimepicker.min.css" rel="stylesheet" />
   <link rel="icon" href="icon.ico">
@@ -37,7 +37,7 @@
   <form name='myForm'>
     <div class='row p-3 m-3'>
 
-      <div class='col-sm-6 border border-dark bg-light' onblur="hideDropdownList('countryList')">
+      <div class='col-sm-6 border border-dark bg-light' id="countryDiv">
         <h6 class='text-right'>🚩الدولة</h6>
 
         <div class='input-group'>
@@ -45,11 +45,6 @@
             onkeyup="filterFunction('countryList','country')" onfocus='showDropdownList("countryList")'  required>
           <div id="countryList" class="dropdown-content"></div>
         </div>
-
-        <p style='text-align: right' id='callingCode'></p>
-        <p style='text-align: right'></p>
-        <p style='text-align: right'></p>
-        <p style='text-align: right'></p>
       </div>
 
       <div class='col-sm-6 border border-dark bg-light'>
