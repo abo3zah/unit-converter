@@ -2,14 +2,6 @@ function showDropdownList(dropdownListID) {
   $("#" + dropdownListID).addClass("show")
 }
 
-$.ajax({
-  url: "https://www.google.com/search?q=%D9%85%D8%B3%D8%A7%D8%AD%D8%A9+%D8%A7%D9%84%D9%85%D9%85%D9%84%D9%83%D8%A9",
-  dataType: 'text',
-  success: function (data) {
-    console.log($(".Z0LcW").html());
-  }
-});
-
 function hideDropdownList(dropdownListID) {
   $("#" + dropdownListID).removeClass("show")
 }
@@ -49,12 +41,37 @@ function ulClickCountry(inputID, str, dropdownId) {
   d3.dsv(",", "csv/countryFullInfo.csv", d3.autoType, (d) => {
 
     if (d['name_ar'] == str) {
-      div = d3.select("#countryDiv");
+      var div = d3.select("#countryDiv");
 
-      div.selectAll("p, img").remove();
+      div.selectAll("p, .imgDiv").remove();
 
-      div.append("img").attr("src", d['flags/svg']).attr("width", 200).attr("height", 150).style('margin', '10px').attr('align', 'left').style('border', '1px solid black');
-      div.append("img").attr("src", d['coatOfArms/svg']).attr("width", 200).attr("height", 150).style('margin', '10px').attr('align', 'left').style('border', '1px solid black');
+      var imgDiv = div.append('div')
+        .attr('class', 'imgDiv');
+
+
+      imgDiv.append('img')
+        .attr('class', 'flag')
+        .attr("src", d['coatOfArms/svg'])
+        .attr('width', '200px')
+        .attr('height', '200px');
+
+      imgDiv.append('img')
+        .attr('class', 'flag')
+        .attr("src", d['flags/svg'])
+        .attr('width', '200px')
+        .attr('height', '200px')
+
+      var table = div.append('table')
+      var tbody = table.append('tbody')
+
+      var rows = tbody.selectAll('tr')
+        .data(['name/official_ar','region_ar','capital_ar','area','population','Phone Code','cca3'])
+        .enter()
+        .append('tr')
+      
+
+      
+
       div.append('p').style("text-align", "right").style('margin-top', '10px').html("<b>الاسم الرسمي:</b> " + d['name/official_ar']);
       div.append('p').style("text-align", "right").html("<b>القارة: </b>" + d['region_ar']);
       div.append('p').style("text-align", "right").html("<b>العاصمة: </b>" + d['capital_ar']);
@@ -80,4 +97,6 @@ dataFetch().then((data) => {
     .attr('onclick', "ulClickCountry('#country',$(this).text(),'countryList')")
     .text((d) => d['name_ar']);
 
+
+  ulClickCountry('#country', 'المملكة العربية السعودية', 'countryList')
 });
