@@ -28,7 +28,7 @@ function filterFunction(dropdownListID, inputID) {
 
 const dataFetch = async () => {
   try {
-    const res = await d3.dsv(",", "csv/countryFullInfo.csv", d3.autoType);
+    const res = await d3.dsv(",", "csv/countryFullInfov2.csv", d3.autoType);
     return res
   } catch (err) {
     console.error(err);
@@ -38,47 +38,75 @@ const dataFetch = async () => {
 function ulClickCountry(inputID, str, dropdownId) {
   $(inputID).val(str);
   document.getElementById(dropdownId).classList.remove("show")
-  d3.dsv(",", "csv/countryFullInfo.csv", d3.autoType, (d) => {
+  d3.dsv(",", "csv/countryFullInfov2.csv", d3.autoType, (d) => {
 
-    if (d['name_ar'] == str) {
+    if (d['اسم الدولة'] == str) {
       var div = d3.select("#countryDiv");
 
-      div.selectAll("p, .imgDiv").remove();
+      div.selectAll("#imgDiv, #tableDiv").remove();
 
       var imgDiv = div.append('div')
-        .attr('class', 'imgDiv');
+        .attr('id', 'imgDiv')
+        .attr('class', 'd-flex justify-content-center');
 
 
       imgDiv.append('img')
-        .attr('class', 'flag')
-        .attr("src", d['coatOfArms/svg'])
-        .attr('width', '200px')
+        .attr('class', 'm-3')
+        .attr("src", d['الشعار'])
+        .attr('width', '40%')
+        .style('max-width','300px')
         .attr('height', '200px');
 
       imgDiv.append('img')
-        .attr('class', 'flag')
-        .attr("src", d['flags/svg'])
-        .attr('width', '200px')
+        .attr('class', 'm-3 border border-dark')
+        .attr("src", d['العلم'])
+        .attr('width', '40%')
+        .style('max-width','300px')
         .attr('height', '200px')
 
-      var table = div.append('table')
+      var table = div
+        .append('div')
+        .attr('id', 'tableDiv')
+        .attr('class', 'table-responsive container-fluid p-1')
+        .append('table')
+        .attr('class', 'table table-striped table-bordered align-middle text-center')
+
       var tbody = table.append('tbody')
 
-      var rows = tbody.selectAll('tr')
-        .data(['name/official_ar','region_ar','capital_ar','area','population','Phone Code','cca3'])
-        .enter()
-        .append('tr')
-      
+      for (var element of Object.keys(d)) {
 
-      
+        if (element == 'العلم') {
+          break;
+        }
 
-      div.append('p').style("text-align", "right").style('margin-top', '10px').html("<b>الاسم الرسمي:</b> " + d['name/official_ar']);
-      div.append('p').style("text-align", "right").html("<b>القارة: </b>" + d['region_ar']);
-      div.append('p').style("text-align", "right").html("<b>العاصمة: </b>" + d['capital_ar']);
-      div.append('p').style("text-align", "right").html("<b>المساحة (كيلومتر مربع): </b>" + d['area'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-      div.append('p').style("text-align", "right").html("<b>عدد السكان: </b>" + d['population'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-      div.append('p').style("text-align", "right").html("<b>الرقم الاتصال:</b> +" + d['Phone Code']);
-      div.append('p').style("text-align", "right").html("<b>الاختصار: </b>" + d['cca3']);
+        if (element == 'الخريطة') {
+
+        }
+
+        var row = tbody.append('tr')
+
+        row.append('th')
+          .attr('class', 'col-6 bg-light bg-gradient text-black')
+          .text(element)
+
+        if (element == 'الخريطة') {
+
+          row.append('td')
+          .attr('class', 'col-6')
+          .append('a')
+            .attr('href',d[element])
+            .attr('target','_blank')
+            .attr('class','btn btn-primary link-primary text-white')
+            .html('الموقع&nbsp; ')
+            .append('i')
+              .attr('class','bi bi-box-arrow-up-right')
+
+        }else {
+          row.append('td')
+            .attr('class', 'col-6')
+            .text(d[element].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+        }
+      }
     }
 
   })
@@ -94,8 +122,8 @@ dataFetch().then((data) => {
   var options = dropDown.selectAll("ul")
     .data(data)
     .enter().append("ul")
-    .attr('onclick', "ulClickCountry('#country',$(this).text(),'countryList')")
-    .text((d) => d['name_ar']);
+    .attr('onclick', (d) => "ulClickCountry('#country','" + d['اسم الدولة'] + "','countryList')")
+    .text((d) => d['اسم الدولة']);
 
 
   ulClickCountry('#country', 'المملكة العربية السعودية', 'countryList')
