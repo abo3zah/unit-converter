@@ -192,13 +192,11 @@ function dialogShow(str) {
         title:"معلومات عن " + d['اسم الدولة']
       });
 
-      $('.ui-dialog-titlebar-close').removeClass("ui-dialog-titlebar-close").addClass("bi bi-x");
+      $('.ui-dialog-titlebar-close').removeClass("ui-dialog-titlebar-close").addClass("bi bi-x-lg");
     }
 
   })
 }
-
-
 
 dataFetch().then((data) => {
 
