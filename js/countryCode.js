@@ -35,6 +35,7 @@ const dataFetch = async () => {
   }
 }
 
+/*
 function ulClickCountry(inputID, str, dropdownId) {
   $(inputID).val(str);
   document.getElementById(dropdownId).classList.remove("show")
@@ -110,7 +111,7 @@ function ulClickCountry(inputID, str, dropdownId) {
     }
 
   })
-}
+}*/
 
 function dialogShow(str) {
   d3.dsv(",", "csv/countryFullInfov2.csv", d3.autoType, (d) => {
@@ -200,23 +201,23 @@ function dialogShow(str) {
 
 dataFetch().then((data) => {
 
-  var dropDown = d3.select("#countryList")
 
   continentArray = Array.from(d3.group(data, (d) => d['القارة']).keys())
 
-  d3.select("div#main").selectAll('div#continent')
-    .data(continentArray)
-    .enter()
-    .append('div')
-      .attr('id', (d) => d.replace(/\s/g, ''))
-      .attr('class', 'col border border-dark bg-light m-3 grid-container')
-      .append('h1')
-        .attr('class', 'text-center')
-        .style('grid-column', '1 / span 4')
-        .style('background-color','#dee2e6')
-        .text(d => d)
-
-  for (continent of continentArray) {
+  var contentDiv = d3.select("div#main")
+      .selectAll('div#continent')
+      .data(continentArray)
+      .enter()
+        .append('div')
+          .attr('id', (d) => d.replace(/\s/g, ''))
+          .attr('class', 'col border border-dark bg-light m-3 grid-container')
+          .append('h3')
+            .attr('class', 'text-center')
+            .style('grid-column', '1 / span 4')
+            .style('background-color','#dee2e6')
+            .text((d) => d)
+  
+  for (continent of continentArray) {    
     var selectedDiv = d3.select("div#" + continent.replace(/\s/g, '')).selectAll('img')
       .data(d3.sort(d3.filter(data, d => d['القارة'] == continent),(a,b) => d3.descending(a['عدد السكان'],b['عدد السكان'])))
       .enter()
@@ -238,30 +239,6 @@ dataFetch().then((data) => {
   }
 
   /*
-  var flagsDiv = d3.select("div#main")
-    .append('div')
-    .attr('class', 'col border border-dark bg-light m-3 grid-container');
-
-  var imgDiv = flagsDiv.selectAll('img')
-    .data(data)
-    .enter()
-    .append('div')
-      .attr('class','p-3')
-
-  imgDiv.append('img')
-    .attr('src', (d) => d['العلم'])
-    .attr('width', "100%")
-    .attr('height', "200px")
-    .attr('onclick', (d) => "dialogShow('" + d['اسم الدولة'] + "')")
-    .style('cursor', 'pointer')
-    .style('border', '1px solid black');
-
-  imgDiv.append('figcaption')
-    .text((d) => d['اسم الدولة'])
-    .attr('class', 'fw-bold bg-dark text-white')
-    .style('text-align', 'center');
-  */
-
   var options = dropDown.selectAll("ul")
     .data(data)
     .enter().append("ul")
@@ -269,5 +246,5 @@ dataFetch().then((data) => {
     .text((d) => d['اسم الدولة']);
 
 
-  ulClickCountry('#country', 'المملكة العربية السعودية', 'countryList')
+  ulClickCountry('#country', 'المملكة العربية السعودية', 'countryList')*/
 });
