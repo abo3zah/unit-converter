@@ -180,16 +180,16 @@ function dialogShow(str) {
       }
 
       $("#dialog").dialog({
-        classes:{
-          'ui-dialog-titlebar':"ui-corner-all bg-dark text-white"
+        classes: {
+          'ui-dialog-titlebar': "ui-corner-all bg-dark text-white"
         },
         show: true,
         hide: true,
-        width: $( window ).width()*0.5,
-        maxHeight: $( window ).height()*0.8,
-        maxWidth: $( window ).width()*0.8,
+        width: $(window).width() * 0.5,
+        maxHeight: $(window).height() * 0.8,
+        maxWidth: $(window).width() * 0.8,
         modal: true,
-        title:"معلومات عن " + d['اسم الدولة']
+        title: "معلومات عن " + d['اسم الدولة']
       });
 
       $('.ui-dialog-titlebar-close').removeClass("ui-dialog-titlebar-close").addClass("bi bi-x-lg");
@@ -202,16 +202,53 @@ dataFetch().then((data) => {
 
   var dropDown = d3.select("#countryList")
 
+  continentArray = Array.from(d3.group(data, (d) => d['القارة']).keys())
+
+  d3.select("div#main").selectAll('div#continent')
+    .data(continentArray)
+    .enter()
+    .append('div')
+      .attr('id', (d) => d.replace(/\s/g, ''))
+      .attr('class', 'col border border-dark bg-light m-3 grid-container')
+      .append('h1')
+        .attr('class', 'text-center')
+        .style('grid-column', '1 / span 4')
+        .style('background-color','#dee2e6')
+        .text(d => d)
+
+  for (continent of continentArray) {
+    var selectedDiv = d3.select("div#" + continent.replace(/\s/g, '')).selectAll('img')
+      .data(d3.sort(d3.filter(data, d => d['القارة'] == continent),(a,b) => d3.descending(a['عدد السكان'],b['عدد السكان'])))
+      .enter()
+      .append('div')
+        .attr('class', 'p-3')
+
+    selectedDiv.append('img')
+      .attr('src', (d) => d['العلم'])
+      .attr('width', "100%")
+      .attr('height', "200px")
+      .attr('onclick', (d) => "dialogShow('" + d['اسم الدولة'] + "')")
+      .style('cursor', 'pointer')
+      .style('border', '1px solid black');
+
+    selectedDiv.append('figcaption')
+      .text((d) => d['اسم الدولة'])
+      .attr('class', 'fw-bold bg-dark text-white')
+      .style('text-align', 'center');
+  }
+
+  /*
   var flagsDiv = d3.select("div#main")
     .append('div')
     .attr('class', 'col border border-dark bg-light m-3 grid-container');
 
-  var divs = flagsDiv.selectAll('img')
+  var imgDiv = flagsDiv.selectAll('img')
     .data(data)
     .enter()
-    .append('div');
+    .append('div')
+      .attr('class','p-3')
 
-  divs.append('img')
+  imgDiv.append('img')
     .attr('src', (d) => d['العلم'])
     .attr('width', "100%")
     .attr('height', "200px")
@@ -219,10 +256,11 @@ dataFetch().then((data) => {
     .style('cursor', 'pointer')
     .style('border', '1px solid black');
 
-  divs.append('figcaption')
+  imgDiv.append('figcaption')
     .text((d) => d['اسم الدولة'])
     .attr('class', 'fw-bold bg-dark text-white')
     .style('text-align', 'center');
+  */
 
   var options = dropDown.selectAll("ul")
     .data(data)
