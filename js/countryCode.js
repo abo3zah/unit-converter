@@ -186,7 +186,7 @@ function dialogShow(str) {
         },
         show: true,
         hide: true,
-        width: $(window).width() * 0.5,
+        width: $(window).width() * 0.8,
         maxHeight: $(window).height() * 0.8,
         maxWidth: $(window).width() * 0.8,
         modal: true,
