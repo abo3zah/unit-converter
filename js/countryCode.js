@@ -1,15 +1,3 @@
-function showDropdownList(dropdownListID) {
-  $("#" + dropdownListID).addClass("show")
-}
-
-function hideDropdownList(dropdownListID) {
-  $("#" + dropdownListID).removeClass("show")
-}
-
-$("html").click(function (e) {
-  $(e.target)[0] == $('#country')[0] ? $("#countryList").addClass("show") : $("#countryList").removeClass("show");
-});
-
 function filterFunction(dropdownListID, inputID) {
   var input, filter, elements, i;
   input = document.getElementById(inputID);
@@ -34,84 +22,6 @@ const dataFetch = async () => {
     console.error(err);
   }
 }
-
-/*
-function ulClickCountry(inputID, str, dropdownId) {
-  $(inputID).val(str);
-  document.getElementById(dropdownId).classList.remove("show")
-  d3.dsv(",", "csv/countryFullInfov2.csv", d3.autoType, (d) => {
-
-    if (d['اسم الدولة'] == str) {
-      var div = d3.select("#countryDiv");
-
-      div.selectAll("#imgDiv, #tableDiv").remove();
-
-      var imgDiv = div.append('div')
-        .attr('id', 'imgDiv')
-        .attr('class', 'd-flex justify-content-center');
-
-
-      imgDiv.append('img')
-        .attr('class', 'm-3')
-        .attr("src", d['الشعار'])
-        .attr('width', '40%')
-        .style('max-width', '300px')
-        .attr('height', '200px');
-
-      imgDiv.append('img')
-        .attr('class', 'm-3 border border-dark')
-        .attr("src", d['العلم'])
-        .attr('width', '40%')
-        .style('max-width', '300px')
-        .attr('height', '200px')
-
-      var table = div
-        .append('div')
-        .attr('id', 'tableDiv')
-        .attr('class', 'table-responsive container-fluid p-1')
-        .append('table')
-        .attr('class', 'table table-striped table-bordered align-middle text-center')
-
-      var tbody = table.append('tbody')
-
-      for (var element of Object.keys(d)) {
-
-        if (element == 'العلم') {
-          break;
-        }
-
-        if (element == 'الخريطة') {
-
-        }
-
-        var row = tbody.append('tr')
-
-        row.append('th')
-          .attr('class', 'col-6 bg-light bg-gradient text-black')
-          .text(element)
-
-        if (element == 'الخريطة') {
-
-          row.append('td')
-            .attr('class', 'col-6')
-            .append('a')
-            .attr('href', d[element])
-            .attr('target', '_blank')
-            .attr('class', 'btn btn-primary link-primary text-white')
-            .html('الموقع&nbsp; ')
-            .append('i')
-            .attr('class', 'bi bi-box-arrow-up-right')
-
-        } else {
-          row.append('td')
-            .attr('class', 'col-6')
-            .text(d[element].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-        }
-      }
-    }
-
-  })
-}*/
 
 function dialogShow(str) {
   d3.dsv(",", "csv/countryFullInfov2.csv", d3.autoType, (d) => {
@@ -186,8 +96,9 @@ function dialogShow(str) {
         },
         show: true,
         hide: true,
-        width: $(window).width() * 0.8,
-        maxHeight: $(window).height() * 0.8,
+        closeOnEscape: true,
+        width: $(window).width()*0.95,
+        maxHeight: $(window).height() * 0.95,
         maxWidth: $(window).width() * 0.8,
         modal: true,
         title: "معلومات عن " + d['اسم الدولة']
@@ -199,12 +110,22 @@ function dialogShow(str) {
   })
 }
 
+function hideContent(id){
+
+  if (d3.select('[class*="'+id+'"]').style('display') == "block"){
+    d3.selectAll('[class*="'+id+'"]').style('display', 'none');
+  }else{
+    d3.selectAll('[class*="'+id+'"]').style('display', 'block');
+  }
+  
+}
+
 dataFetch().then((data) => {
 
 
   continentArray = Array.from(d3.group(data, (d) => d['القارة']).keys())
 
-  var contentDiv = d3.select("div#main")
+  d3.select("div#main")
       .selectAll('div#continent')
       .data(continentArray)
       .enter()
@@ -213,6 +134,7 @@ dataFetch().then((data) => {
           .attr('class', 'col border border-dark bg-light m-3 grid-container')
           .append('h3')
             .attr('class', 'title text-center')
+            .attr('onclick', (d) => 'hideContent("' + d.replace(/\s/g, '') + '")')
             .style('background-color','#dee2e6')
             .text((d) => d)
   
@@ -221,7 +143,7 @@ dataFetch().then((data) => {
       .data(d3.sort(d3.filter(data, d => d['القارة'] == continent),(a,b) => d3.descending(a['عدد السكان'],b['عدد السكان'])))
       .enter()
       .append('div')
-        .attr('class', 'p-3')
+        .attr('class', d => d['القارة'].replace(/\s/g, '') + ' p-3')
 
     selectedDiv.append('img')
       .attr('src', (d) => d['العلم'])
@@ -229,21 +151,12 @@ dataFetch().then((data) => {
       .attr('height', "200px")
       .attr('onclick', (d) => "dialogShow('" + d['اسم الدولة'] + "')")
       .style('cursor', 'pointer')
-      .style('border', '1px solid black');
+      .style('border', '1px solid black')
+      .style('object-fit', 'fill');
 
     selectedDiv.append('figcaption')
       .text((d) => d['اسم الدولة'])
       .attr('class', 'fw-bold bg-dark text-white')
       .style('text-align', 'center');
   }
-
-  /*
-  var options = dropDown.selectAll("ul")
-    .data(data)
-    .enter().append("ul")
-    .attr('onclick', (d) => "ulClickCountry('#country','" + d['اسم الدولة'] + "','countryList')")
-    .text((d) => d['اسم الدولة']);
-
-
-  ulClickCountry('#country', 'المملكة العربية السعودية', 'countryList')*/
 });
