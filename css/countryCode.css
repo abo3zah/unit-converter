@@ -4,13 +4,13 @@
 }
 
 [class*="title"] {
-    grid-column: 1 / span 4
+    grid-column: 1 / -1
 }
 
 @media only screen and (max-width: 900px) {
     .grid-container {
         display: grid;
-        grid-template-columns: 100%;
+        grid-template-columns: 1fr;
         grid-column-gap: 50px;
         grid-row-gap: 5px;
     }
