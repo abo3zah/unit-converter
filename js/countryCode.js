@@ -133,9 +133,8 @@ dataFetch().then((data) => {
           .attr('id', (d) => d.replace(/\s/g, ''))
           .attr('class', 'col border border-dark bg-light m-3 grid-container')
           .append('h3')
-            .attr('class', 'title text-center')
+            .attr('class', 'title text-center clickable')
             .attr('onclick', (d) => 'hideContent("' + d.replace(/\s/g, '') + '")')
-            .style('background-color','#dee2e6')
             .text((d) => d)
   
   for (continent of continentArray) {    

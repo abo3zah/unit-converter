@@ -1,13 +1,36 @@
 <header>
-    <svg width="100%" height="30">
-        <defs>
-            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#0F2027" />
-                <stop offset="50%" style="stop-color:#203A43" />
-                <stop offset="100%" style="stop-color:#2C5364" />
-            </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" style="fill:url(#grad1)" />
-        <text x="5%" y="50%" text-anchor="middle" alignment-baseline="middle" font-family="cursive" fill="white" font-size="1em">أدوات ⚒️</text>
-    </svg>
+    <div class="topBar bg-dark px-3">
+        <div class="navigation topBar">
+            <div class="dropdown">
+                <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+                    تحويل
+                </button>
+                <div class="dropdown-menu">
+                    <a href="index.html" class="dropdown-item">تحويل الوحدات</a>
+                    <a href="dateConverter.html" class="dropdown-item">تحويل التاريخ</a>
+                    <a href="domainToRange.html" class="dropdown-item">المجال و النطاق</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+                    رسم بياني
+                </button>
+                <div class="dropdown-menu">
+                    <a href="histogramD3.html" class="dropdown-item">Histogram</a>
+                    <a href="scatterD3iris.html" class="dropdown-item">Scatter</a>
+                    <a href="violinD3.html" class="dropdown-item">Violin</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+                    أخرى
+                </button>
+                <div class="dropdown-menu">
+                    <a href="caloriesCalc.html" class="dropdown-item">حاسب السعرات الحرارية</a>
+                    <a href="countryCode.html" class="dropdown-item">معلومات الدول</a>
+                </div>
+            </div>
+        </div>
+        <span class="navbar-brand px-2 icon">أدوات ⚒️</span>
+    </div>
 </header>

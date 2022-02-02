@@ -1,0 +1,41 @@
+:root {
+    --country-border: black;
+    --sea-color: #0018f3;
+}
+
+svg {
+    width: 100%;
+    height: 100vh;
+    background-color: none;
+}
+
+.sphere {
+    fill: var(--sea-color);
+}
+
+.graticules {
+    fill: none;
+    stroke: black;
+    stroke-width: 5px;
+}
+
+.country {
+    stroke: var(--country-border);
+    stroke-width: 0.05px;
+}
+
+.country:hover {
+    stroke-width: 0.25px;
+    animation: color-change-2x 0.5s linear infinite alternate both;
+}
+
+
+@keyframes color-change-2x {
+    0% {
+        fill: #ffffff;
+    }
+
+    100% {
+        fill: #aaaaaa;
+    }
+}

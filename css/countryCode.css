@@ -3,13 +3,20 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-[class*="title"] {
-    grid-column: 1 / -1
+.clickable {
+    cursor: pointer;
+}
+
+.title {
+    grid-column: 1 / -1;
+    background: var(--title-background);
+    color: var(--title-text-color);
+    padding: var(--title-padding-y) var(--title-padding-x);
+    margin: 0px;
 }
 
 @media only screen and (max-width: 900px) {
     .grid-container {
-        display: grid;
         grid-template-columns: 1fr;
         grid-column-gap: 50px;
         grid-row-gap: 5px;
