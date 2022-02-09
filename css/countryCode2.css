@@ -1,6 +1,6 @@
 :root {
     --country-border: black;
-    --sea-color: #0018f3;
+    --sea-color: rgb(90,154,254,1);
 }
 
 svg {
@@ -16,7 +16,7 @@ svg {
 .graticules {
     fill: none;
     stroke: black;
-    stroke-width: 5px;
+    stroke-width: 0.1px;
 }
 
 .country {
