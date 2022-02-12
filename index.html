@@ -3,68 +3,54 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Unit Converter 🌡️</title>
+    <link rel="icon" href="icon.ico">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="css\bootstrap-datetimepicker.min.css" rel="stylesheet" />
-    <link rel="icon" href="icon.ico">
+    <link rel="stylesheet" href="css\header.css">
+    <link rel="stylesheet" href="css\unitConverter.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <link rel="stylesheet" href="css\style.css">
-    <link rel="stylesheet" href="css\header.css">
-
-    <style>
-      * {
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      }
-      
-      a:hover {
-        background-color: hsl(0,0%,30%);
-      }
-    </style>
     
   </head>
   <body ng-app="myConversionApp" ng-controller="myCtrl">
 
-    <div ng-include="'header.htm'"></div>
-
-    <br>
-    
-    <div class="container p-3">
-
-      <!--  -->
-      <div class="container row">
-        <select ng-change="loadUnits()" ng-model="unitType" ng-options="x for x in unitTypes" class="col form-control border-dark border"></select>
-      </div>
-
-      <br>
+    <div class="page">
+      <div ng-include="'header.htm'"></div>
       
-      <!--  -->
-      <div class="row container">
-
-        <div class="container col-md-5 float-right mt-1">
-            <div class="row text-center bg-dark text-white p-1 rounded">من</div>
-            <div class="row mt-1">
-              <input class="col-md-6 p-1 table-hover form-control border border-dark" type="number" ng-model="valueFrom" id="unit_from">
-              <select id="unitFrom" class="col-md-6 form-control border border-dark" ng-change="fetchOtherUnits()" ng-model="unitFrom" ng-options="x for x in units"></select>
-            </div>
+      <div class="container p-3">
+        <!--  -->
+        <div class="container row">
+          <select ng-change="loadUnits()" ng-model="unitType" ng-options="x for x in unitTypes" class="col form-control border-dark border"></select>
         </div>
-        
-        <div id="result_div" class="container col-md-5 float-left mt-1">
-          <div class="row text-center bg-dark text-white p-1 rounded" style="text-shadow:1px 1px 0 black">إلى</div>
-          <div class="row mt-1 border-dark" ng-repeat="(y,x) in otherUnits">
-            <span class="form-control">{{x['name']}} : {{ calculate(x) }} {{x["symbol"]}}</span>
+        <br>
+      
+        <!--  -->
+        <div class="row container">
+          <div class="container col-md-5 float-right mt-1">
+              <div class="row text-center bg-dark text-white p-1 rounded">من</div>
+              <div class="row mt-1">
+                <input class="col-md-6 p-1 table-hover form-control border border-dark" type="number" ng-model="valueFrom" id="unit_from">
+                <select id="unitFrom" class="col-md-6 form-control border border-dark" ng-change="fetchOtherUnits()" ng-model="unitFrom" ng-options="x for x in units"></select>
+              </div>
+          </div>
+      
+          <div id="result_div" class="container col-md-5 float-left mt-1">
+            <div class="row text-center bg-dark text-white p-1 rounded" style="text-shadow:1px 1px 0 black">إلى</div>
+            <div class="row mt-1 border-dark" ng-repeat="(y,x) in otherUnits">
+              <span class="form-control">{{x['name']}} : {{ calculate(x) }} {{x["symbol"]}}</span>
+            </div>
           </div>
         </div>
       </div>
 
+      <div ng-include="'footer.htm'"></div>
     </div>
-
-    <br>
-    <br>
-
-    <div ng-include="'footer.htm'"></div>
   </body>
 
   <script type="module" src="js\scriptForIndex.js"></script>

@@ -39,8 +39,9 @@ function padZero(str, len) {
 
 
 //adding the svg
-const svg = d3.select("#main")
+const svg = d3.select("#SVGContainer")
   .append('svg')
+  .attr('viewBox', '0 0 960 480')
 
 const width = svg.attr('width');
 const height = svg.attr('height');
@@ -61,7 +62,7 @@ const colorScale = d3.scaleOrdinal(d3.schemeSet3 )
   .range(['green','yellow'])*/
 
 const g = svg.append('g')
-  //.attr('transform','translate(' + (960/2) + ',' + (480 /2) +')');
+  .attr('transform','translate(0, -10)');
 
 //zooming feature
 svg.call(d3.zoom().on('zoom', e => {
@@ -110,12 +111,13 @@ function draw(yaw, countries, borders){
   g.selectAll('text.countryName').data(countries.features)
     .enter()
     .append('text')
+      .filter(d => d.properties.LABELRANK < 5)
       .attr('class','countryName')
       .attr('unselectable','on')
       .attr('x', d => projection(d3.geoCentroid(d))[0])
       .attr('y', d => projection(d3.geoCentroid(d))[1])
       .attr('font-size',d => (Math.exp(d3.geoArea(d)) * 2) +'px')
-      .text(d => d.properties.LABELRANK < 4 ? d.properties.NAME_AR : "");
+      .text(d=>d.properties.NAME_AR);
 }
 
 //data fetching

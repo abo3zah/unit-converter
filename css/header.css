@@ -3,25 +3,112 @@
     --title-text-color: white;
     --title-padding-y: 5px;
     --title-padding-x: 0px;
+    --dark-background:#212529;
+    --dark-background-hover:#6b6b6b;
 }
 
-* {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+*:not(footer span) {
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 }
 
-a:hover {
-    background-color: hsl(0, 0%, 30%);
+button{
+    cursor: pointer;
+    font-size: large;
+}
+
+.page{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 .topBar {
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-grow: 10;
+    justify-content: flex-end;
+    background-color: var(--dark-background);
+    padding: 0.5rem 0;
+}
+
+.linkbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 .icon {
-    align-items: flex-start;
+    align-items: center;
     color: var(--title-text-color);
     flex-grow: 0;
+    padding-left: 0.2rem;
+    font-weight: bold;
+}
+
+.dropdown{
+    position: relative;
+    padding: 0 0.2rem;
+}
+
+.dropdown > button:first-child {
+    background-color: var(--dark-background);
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    position: relative;
+    top:0;
+}
+
+.dropdown > button:first-child::after {
+    content: "▼";
+    color: white;
+    font-size: 0.5rem;
+}
+
+.dropdown-menu{
+    display: none;
+    background-color:aliceblue;
+    position: absolute;
+    top: 1.6rem;
+    border-radius: 5px;
+    min-width: 200px;
+}
+
+.dropdown-item{
+    text-decoration: none;
+    color: black;
+    white-space: nowrap;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dropdown-item:hover{
+    text-decoration: none;
+    color: white;
+    background-color: hsl(0, 0%, 30%);
+}
+
+.dropdown > button:first-child:hover {
+    background-color: var(--dark-background-hover);
+}
+
+.dropdown > button:first-child:hover ~  .dropdown-menu,
+.dropdown-menu:hover{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+footer {
+    background-color: var(--dark-background);
+}
+
+footer div {
+    color:white;
+    padding: 0.5rem 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-size: large;
 }
