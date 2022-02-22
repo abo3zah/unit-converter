@@ -1,27 +1,123 @@
-:root {
-    --title-background: linear-gradient(180deg, rgba(63, 63, 63, 1) 0%, rgba(96, 96, 96, 1) 100%);
-    --title-text-color: white;
-    --title-padding-y: 5px;
-    --title-padding-x: 0px;
+*:not(footer span):not(text) {
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    font-size: large;
 }
 
-* {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+button{
+    cursor: pointer;
 }
 
-a:hover {
-    background-color: hsl(0, 0%, 30%);
+body {
+    background: radial-gradient(ellipse, rgb(239, 241, 243) 0%, transparent 30%);
+    background-size: 10px 10px;
+    background-repeat: repeat;
+}
+
+.page{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 .topBar {
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-grow: 10;
+    justify-content: flex-end;
+    background: var(--title-background);
+    padding: 0.5rem 0;
+}
+
+.linkBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 .icon {
-    align-items: flex-start;
+    align-items: center;
     color: var(--title-text-color);
     flex-grow: 0;
+    padding-left: 0.2rem;
+    font-weight: bold;
+}
+
+.dropdown{
+    position: relative;
+    padding: 0 0.2rem;
+}
+
+.dropdown > button:first-child {
+    background-color: transparent;
+    text-shadow: 1px 1px 2px black;
+    color: whitesmoke;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    position: relative;
+    top:0;
+}
+
+body{
+    margin: 0px;
+}
+
+.dropdown > button:first-child::after {
+    content: "▼";
+    color: white;
+    font-size: 0.5rem;
+}
+
+.dropdown-menu{
+    display: none;
+    background-color:whitesmoke;
+    position: absolute;
+    top: 1.4rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    min-width: 200px;
+}
+
+.dropdown-menu ul{
+    list-style: none;
+    padding: 0;
+}
+
+.dropdown-item{
+    text-decoration: none;
+    color: black;
+    white-space: nowrap;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dropdown-item:hover{
+    text-decoration: none;
+    color: white;
+    background-color: hsl(0, 0%, 30%);
+}
+
+.dropdown > button:first-child:hover {
+    background-color: var(--dark-background-hover);
+}
+
+.dropdown > button:first-child:hover ~  .dropdown-menu,
+header .dropdown-menu:hover{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+footer {
+    background: var(--title-background);
+}
+
+footer div {
+    color:white;
+    text-shadow: 1px 1px 2px black;
+    padding: 0.5rem 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-size: large;
 }

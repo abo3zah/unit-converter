@@ -1,0 +1,49 @@
+:root {
+    --country-border: black;
+    --sea-color: rgb(68 119 199);
+}
+
+#SVGContainer {
+    display: grid;
+    justify-content: center;
+    align-items: stretch;
+}
+
+svg {
+    background-color: none;
+}
+
+.sphere {
+    fill: var(--sea-color);
+}
+
+.graticules {
+    fill: none;
+    stroke: black;
+    stroke-width: 0.1px;
+}
+
+.borders {
+    stroke: var(--country-border);
+    stroke-width: 0.05px;
+    fill:none;
+}
+
+.countryName {
+    fill: black;
+    font-weight: bolder;
+}
+
+.country:hover {
+    animation: color-change 0.5s linear infinite alternate both;
+}
+
+text {
+    pointer-events: none;
+}
+
+@keyframes color-change {
+    from {fill: #ffffff}
+    to {fill: #aaaaaa;}
+}
+

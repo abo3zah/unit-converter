@@ -1,0 +1,80 @@
+.mainContainer{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+}
+
+.flexColumn {
+    flex-direction: column;
+}
+
+.mainContainer > select{
+    flex-grow: 1;
+    padding: 0.5rem 0;
+    max-width: 500px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.inputOutputBox {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1rem 1rem;
+    width: 100%;
+}
+
+.inputOutputBox > div{
+    width: 49.8%;
+    min-width: 600px;
+}
+
+.inputBox{
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: flex-start;
+    padding: 0.1rem 0.1rem;
+}
+
+.inputControlBox {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 0.2rem;
+}
+
+.inputControlBox *{
+    border-radius: 5px;
+}
+
+.outputBox{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0.1rem 0.1rem;
+}
+
+.outputBox span {
+    background-color: whitesmoke;
+}
+
+.darkBackground{
+    background-color: var(--header-background);
+    color: white;
+}
+
+.center{
+    text-align: center;
+}
+
+.padding{
+    padding: 0.2rem 10px;
+}
+
+.rounded{
+    border-radius: 5px;
+}
+
+.bordered{
+    border: 1px solid lightslategray;
+}

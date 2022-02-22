@@ -1,57 +1,57 @@
 export let unitData = {
-    "time": {
-		"second": {
-			"name": "second",
-			"symbol": "s",
+    "الوقت": {
+		"ثانية": {
+			"name": "ثانية",
+			"symbol": "ث",
 			"multiplier": 1,
             "offset":0
 		},
-        "minute": {
-			"name": "minute",
-			"symbol": "min",
+        "دقيقة": {
+			"name": "دقيقة",
+			"symbol": "د",
 			"multiplier": 60,
 			"offset":0
 		},
-        "hour": {
-			"name": "hour",
+        "ساعة": {
+			"name": "ساعة",
 			"plural": "hours",
-            "symbol": "h",
+            "symbol": "س",
             "multiplier": 3600,
             "offset":0
         },
-        "day": {
-            "name": "day",
-			"symbol": "d",
+        "يوم": {
+            "name": "يوم",
+			"symbol": "يوم",
             "multiplier": 86400,
             "offset":0
 		},
-        "week": {
-            "name": "week",
-			"symbol": "wk",
+        "أسبوع": {
+            "name": "أسبوع",
+			"symbol": "أسبوع",
             "multiplier": 604800,
             "offset":0
         },
-        "month": {
-				"name": "month",
-				"symbol":"mn",
+        "شهر": {
+				"name": "شهر",
+				"symbol":"شهر",
                 "multiplier": 2629800,
                 "offset":0
         },
-        "year": {
-				"name": "year",
-				"symbol": "yr",
+        "سنة": {
+				"name": "سنة",
+				"symbol": "سنة",
 				"multiplier": 31557600,
                 "offset":0
         },
-        "decade": {
-				"name": "decade",
-                "symbol":"decade",
+        "عقد": {
+				"name": "عقد",
+                "symbol":"عقد",
                 "multiplier": 315576000,
                 "offset":0
         },
-        "century": {
-				"name": "century",
-                "symbol": "century",
+        "قرن": {
+				"name": "قرن",
+                "symbol": "قرن",
 				"multiplier": 3155760000,
 				"offset":0
         },
