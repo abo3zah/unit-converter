@@ -13,10 +13,10 @@
 .mainContainer > select{
     flex-grow: 1;
     padding: 0.5rem 0;
-    max-width: 500px;
     text-align: center;
     font-size: 1.2rem;
     font-weight: bold;
+    max-width: max(30%, 300px);
 }
 
 .inputOutputBox {
@@ -25,11 +25,14 @@
     flex-wrap: wrap;
     padding: 1rem 1rem;
     width: 100%;
+    gap: 1rem;
 }
 
 .inputOutputBox > div{
-    width: 49.8%;
-    min-width: 600px;
+    width: 48%;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #f5f5f5;
 }
 
 .inputBox{
