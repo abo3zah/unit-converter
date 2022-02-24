@@ -4,140 +4,95 @@
 <head>
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
   <title>المجال و النطاق</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel='icon' href='icon.ico'>
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="css\header.css">
+  <link rel="stylesheet" href="css\variables.css">
+  <link rel="stylesheet" href="css\domainToRange.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" defer></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
   <script src='https://www.w3schools.com/lib/w3.js'></script>
   <script src="https://d3js.org/d3.v6.min.js"></script>
-  <link rel='icon' href='icon.ico'>
-  <link rel="stylesheet" href="css\header.css">
-
-  <style>
-    * {
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
-
-    a:hover {
-      background-color: hsl(0, 0%, 30%);
-    }
-
-    input:invalid {
-      background-color: yellow;
-    }
-  </style>
 
 </head>
 
 <body>
 
-  <div w3-include-html='header.htm'></div>
+  <div class="page">
+    <div w3-include-html='header.htm'></div>
 
-  <br>
+    <div class="mainBox">
 
-  <!-- Main Form -->
-  <!-- configuration -->
-  <div class='col-sm-12'>
-    <div class="row px-3">
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-header bg-primary text-white p-0">
-            <h5 class='text-center'>المجال</h5>
-          </div>
+      <!-- Main Form -->
+      <div class="two-cols">
+
+        <!-- configuration -->
+
+        <div class="container">
+          <h5>المجال</h5>
           <div class="card-body">
             <div class='input-group'>
-              <div class='input-group-append'>
-                <span
-                  class='input-group-text'>الأدنى&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              </div>
-              <input tabindex="1" class='form-control text-primary' id='rangeLow' type='number' name='rangeLow' value='0'
-                onchange='calc()' placeholder='الرقم الأدنى' title="الأدنى" required>
+              <span>الأدنى</span>
+              <input tabindex="1" id='rangeLow' type='number' name='rangeLow' value='0' onchange='calc()'
+                placeholder='الرقم الأدنى' title="الأدنى" required>
             </div>
             <div class='input-group'>
-              <div class='input-group-append'>
-                <span
-                  class='input-group-text'>الأعلى&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              </div>
-              <input tabindex="2" class='form-control text-primary' id='rangeHigh' type='number' name='rangeHigh'
-                value='100' onchange='calc()' placeholder='الرقم الأعلى' title="الأعلى" required>
+              <span>الأعلى</span>
+              <input tabindex="2" id='rangeHigh' type='number' name='rangeHigh' value='100' onchange='calc()'
+                placeholder='الرقم الأعلى' title="الأعلى" required>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-header bg-primary text-white p-0">
-            <h5 class='text-center'>النطاق</h5>
-          </div>
+
+        <div class="container">
+          <h5>النطاق</h5>
           <div class="card-body">
             <div class='input-group'>
-              <div class='input-group-append'>
-                <span
-                  class='input-group-text'>الأدنى&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              </div>
-              <input tabindex="3" class='form-control text-primary' id='domainLow' type='number' name='domainLow'
-                value='4' onchange='calc()' placeholder='الرقم الأدنى' title="الأدنى" required>
+              <span>الأدنى</span>
+              <input tabindex="3" id='domainLow' type='number' name='domainLow' value='4' onchange='calc()'
+                placeholder='الرقم الأدنى' title="الأدنى" required>
             </div>
             <div class='input-group'>
-              <div class='input-group-append'>
-                <span
-                  class='input-group-text'>الأعلى&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              </div>
+              <span>الأعلى</span>
               <input tabindex="4" class='form-control text-primary' id='domainHigh' type='number' name='domainHigh'
                 value='20' onchange='calc()' placeholder='الرقم الأعلى' title="الأعلى" required>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-  </div>
-
-  <!-- User Entry -->
-  <div class="col-sm-12 mt-3">
-    <div class='col-sm-12'>
-      <div class="card">
-        <div class="card-header bg-secondary p-0">
-          <h5 class='text-center text-white'>رقم من المجال > رقم النطاق</h5>
-        </div>
-        <div class="card-body">
+      <!-- User Entry -->
+      <div class="container">
+          <h5>رقم من المجال > رقم النطاق</h5>
           <div class='input-group'>
-            <div class='input-group-append'>
-              <span class='input-group-text'>الرقم المراد تحويله&nbsp;</span>
-            </div>
-            <input class="text-primary form-control" tabindex="5" class='text-primary' id='inputNumber' type='number'
+            <span>الرقم المراد تحويله&nbsp;</span>
+            <input tabindex="5" class='text-primary' id='inputNumber' type='number'
               name='inputNumber' value='25' onchange='calc()' placeholder='' title="الرقم المراد تحويله" required>
           </div>
-        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- result -->
-  <div class="col-sm-12 mt-3">
-    <div class="col-sm-12">
-      <div class="card">
-        <div class="card-header bg-success p-0">
-          <h5 class='text-center text-white'>النتيجة</h5>
-        </div>
-        <div class="card-body">
-          <p id="result" class="text-center form-control text-info"></p>
-        </div>
+      <!-- result -->
+      <div class="container">
+        <h5 class='text-center text-white'>النتيجة</h5>
+        <p id="result"></p>
       </div>
+
     </div>
+
+    <div w3-include-html='footer.htm'></div>
   </div>
-
-  <br>
-  <br>
-
-  <div w3-include-html='footer.htm'></div>
 
 </body>
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+
 <script>
   w3.includeHTML();
 </script>
+
 <script>
   function calc() {
     let rangeLow = document.querySelector("#rangeLow").value
@@ -149,7 +104,7 @@
     scale.domain([rangeLow, rangeHigh])
       .range([domainLow, domainHigh]);
 
-    document.querySelector("#result").innerHTML =  scale(document.querySelector("#inputNumber").value)
+    document.querySelector("#result").innerHTML = scale(document.querySelector("#inputNumber").value)
   }
 
   let scale = d3.scaleLinear();
