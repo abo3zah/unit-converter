@@ -29,10 +29,10 @@
 }
 
 .inputOutputBox > div{
-    width: 48%;
     border: 1px solid black;
     border-radius: 5px;
     background-color: #f5f5f5;
+    width: clamp(300px, 100%, 48%);
 }
 
 .inputBox{
@@ -42,13 +42,10 @@
     padding: 0.1rem 0.1rem;
 }
 
-.inputControlBox {
+.inputControlBox{
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 0.2rem;
-}
-
-.inputControlBox *{
-    border-radius: 5px;
+    gap: 0.1rem;
 }
 
 .outputBox{
@@ -71,7 +68,7 @@
 }
 
 .padding{
-    padding: 0.2rem 10px;
+    padding: 0.2rem .1rem;
 }
 
 .rounded{

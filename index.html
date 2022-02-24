@@ -33,8 +33,11 @@
         <div class="inputOutputBox">
           
           <div class="inputBox">
-              <div class="center darkBackground padding rounded"><b>من</b></div>
-              <div class="inputBox inputControlBox padding">
+              <div class="center darkBackground padding rounded">
+                <b>من</b>
+              </div>
+              
+              <div class="inputControlBox padding">
                 <input class="rounded padding" type="number" ng-model="valueFrom" id="unit_from">
                 <select class="rounded padding" id="unitFrom" ng-change="fetchOtherUnits()" ng-model="unitFrom" ng-options="x for x in units"></select>
               </div>
@@ -43,7 +46,9 @@
       
           <div id="result_div" class="outputBox">
 
-            <div class="center darkBackground padding rounded" style="text-shadow:1px 1px 0 black"><b>إلى</b></div>
+            <div class="center darkBackground padding rounded">
+              <b>إلى</b>
+            </div>
 
             <div class="inputBox padding" ng-repeat="(y,x) in otherUnits">
               <span class="padding rounded bordered"><b>{{x['name']}}</b> : {{ calculate(x) | number}} {{x["symbol"]}}</span>
