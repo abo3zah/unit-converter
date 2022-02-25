@@ -3,12 +3,11 @@ input:invalid {
 }
 
 .mainBox {
-    margin: 1.5rem 0;
+    margin: 1.5rem 1.5rem;
     display:grid;
-    grid-template-columns: .91fr;
+    grid-template-columns: 1fr;
     justify-content: center;
     align-content:space-around;
-    gap:1rem;
 }
 
 .two-cols{
@@ -18,9 +17,8 @@ input:invalid {
 }
 
 .container{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    display:grid;
+    grid-template-columns: 1fr;
     align-content: stretch;
     border: 1px solid black;
     border-radius: 5px;
@@ -61,6 +59,8 @@ input:invalid {
 
 .input-group input {
     margin: .2rem 0rem .2rem .2rem;
+    border: 1px solid black;
+    border-radius: 5px 0px 0px 5px;
 }
 
 .container p {

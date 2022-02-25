@@ -12,7 +12,6 @@ html{
 }
 
 body {
-    /* background: radial-gradient(ellipse, rgb(239, 241, 243) 0%, transparent 30%); */
     background-size: 10px 10px;
     background-repeat: repeat;
     height: 100%;
