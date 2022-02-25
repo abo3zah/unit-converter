@@ -52,16 +52,6 @@ $(function () {
     });
 });
 
-$('#hpicker').click(function () {
-    $('.mainBox > div:first-child').css('z-index', '1')
-    $('.mainBox > div:nth-child(2)').css('z-index', '2')
-})
-
-$('#gpicker').click(function () {
-    $('.mainBox > div:first-child').css('z-index', '2')
-    $('.mainBox > div:nth-child(2)').css('z-index', '1')
-})
-
 $("#hpicker").on('dp.change', function (arg) {
     if (!arg.date) {
         $("#gShortDate").html('');

@@ -29,11 +29,8 @@ input:invalid {
 .container>h5 {
     width: 100%;
     background: #bdc3c7;
-    /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2c3e50, #3e5666);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: aliceblue;
     text-shadow: 1px 1px 5px black;
     text-align: center;
@@ -50,25 +47,20 @@ input:invalid {
 
 .input-group span {
     background: #667db6;
-    /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     margin: .2rem 0;
     margin-right: .5rem;
     text-align: right;
     color: white;
     text-shadow: 1px 1px 5px black;
     padding: 0.1rem;
-    border-radius: 5px;
+    border-radius: 0 5px 5px 0;
     border: 1px solid black;
 }
 
 .input-group input {
-    margin: .2rem 0;
-    transform: translateX(.5rem);
-    /* border-radius: 5px; */
+    margin: .2rem 0rem .2rem .2rem;
 }
 
 .container p {
