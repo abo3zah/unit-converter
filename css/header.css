@@ -7,14 +7,19 @@ button{
     cursor: pointer;
 }
 
+html{
+    height: 100%;
+}
+
 body {
-    background: radial-gradient(ellipse, rgb(239, 241, 243) 0%, transparent 30%);
+    /* background: radial-gradient(ellipse, rgb(239, 241, 243) 0%, transparent 30%); */
     background-size: 10px 10px;
     background-repeat: repeat;
+    height: 100%;
 }
 
 .page{
-    height: 100vh;
+    height: 100%;
     width: 100%;
     display: grid;
     grid-template-rows: auto 1fr auto;

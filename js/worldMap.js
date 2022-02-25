@@ -42,6 +42,8 @@ function padZero(str, len) {
 const svg = d3.select("#SVGContainer")
   .append('svg')
   .attr('viewBox', '0 0 960 480')
+  .attr('width','100%')
+  .attr('height', '100%');
 
 const width = svg.attr('width');
 const height = svg.attr('height');

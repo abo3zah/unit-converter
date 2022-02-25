@@ -8,7 +8,7 @@ function printDate(x, result, target) {
     $(target).append('<p>' + replaceDigits(result) + '</P>');
 
     // طباعة الفرق في الأيام
-    $(target).append(replaceDigits("<p><b>عدد الأيام إلى هذه اللحظة:</b> " + diffInDays + " يوم</p>"));
+    $(target).append(replaceDigits("<p><b>عدد الأيام إلى هذه اللحظة:</b> " + diffInDays.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " يوم</p>"));
 
     //الحساب بالميلادي
     let years = parseInt(diffInDays / 365);

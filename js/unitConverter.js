@@ -1,22 +1,6 @@
 // TODO: translate to Arabic
 import {unitData} from "./unitData.js";
 
-function download(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
-
-    element.style.display = 'none';
-    document.body.appendChild(element);
-
-    element.click();
-
-    document.body.removeChild(element);
-}
-  
-// Start file download.
-//download("hello.txt",JSON.stringify(unitData));
-
 var app = angular.module("myConversionApp", []);
 app.controller("myCtrl", function ($scope) {
     //functions
@@ -53,7 +37,7 @@ app.controller("myCtrl", function ($scope) {
             $scope.otherUnits[$scope.unitFrom]["offset"] = 0;
         }
 
-        return (((($scope.valueFrom - $scope.otherUnits[$scope.unitFrom]["offset"]) * $scope.otherUnits[$scope.unitFrom]["multiplier"]) / x["multiplier"]) + x["offset"]).toFixed(5);
+        return (((($scope.valueFrom - $scope.otherUnits[$scope.unitFrom]["offset"]) * $scope.otherUnits[$scope.unitFrom]["multiplier"]) / x["multiplier"]) + x["offset"]);
     }
 
     //defs
@@ -63,3 +47,4 @@ app.controller("myCtrl", function ($scope) {
     $scope.otherUnits = {};
     $scope.loadUnits();
 });
+angular.bootstrap(document, ['myConversionApp']);
