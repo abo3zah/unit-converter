@@ -37,6 +37,13 @@ function padZero(str, len) {
   return (zeros + str).slice(-len);
 }
 
+function showTooltip(e,d) {
+  //for tooltip 
+  tooltip.classed("hidden", false)
+    .html(d.properties.NAME_AR + "\nعدد السكان: " + d.properties.POP_EST.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+    .attr("style", "left:"+(e.x+10)+"px;top:"+(e.y+10)+"px")
+}
+
 
 //adding the svg
 const svg = d3.select("#SVGContainer")
@@ -56,6 +63,10 @@ const graticule = d3.geoGraticule()
   .step([10, 10]);
 
 const pathGenerator = d3.geoPath().projection(projection);
+
+const tooltip = d3.select("#SVGContainer")
+  .append("div")
+  .attr("class", "tooltip hidden");
 
 //color scale
 const colorScale = d3.scaleOrdinal(d3.schemeSet3 )
@@ -98,10 +109,11 @@ function draw(yaw, countries, borders){
       .attr('d', d => pathGenerator(d))
       .attr('class', 'country')
       .attr('fill', d => colorScale(d.properties.MAPCOLOR9))
+      .on("mousemove", (e,d) => showTooltip(e,d))
+      .on("mouseout",()=>{tooltip.classed("hidden", true)})
+      .on("touchstart", (e,d) => showTooltip(e,d))
+      .on("touchmove", (e,d) => showTooltip(e,d));
       //.attr('fill', 'lightyellow')
-      .append('title')
-        .text(d=> d.properties.NAME_AR +
-          "\nعدد السكان: " + d.properties.POP_EST.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
   //add inner borders
   g.selectAll('path.borders').data(borders.features)
@@ -110,16 +122,16 @@ function draw(yaw, countries, borders){
       .attr('d', d => pathGenerator(d))
       .attr('class', 'borders');
 
-  g.selectAll('text.countryName').data(countries.features)
-    .enter()
-    .append('text')
-      .filter(d => d.properties.LABELRANK < 5)
-      .attr('class','countryName')
-      .attr('unselectable','on')
-      .attr('x', d => projection(d3.geoCentroid(d))[0])
-      .attr('y', d => projection(d3.geoCentroid(d))[1])
-      .attr('font-size',d => (Math.exp(d3.geoArea(d)) * 2) +'px')
-      .text(d=>d.properties.NAME_AR);
+  // g.selectAll('text.countryName').data(countries.features)
+  //   .enter()
+  //   .append('text')
+  //     .filter(d => d.properties.LABELRANK < 5)
+  //     .attr('class','countryName')
+  //     .attr('unselectable','on')
+  //     .attr('x', d => projection(d3.geoCentroid(d))[0])
+  //     .attr('y', d => projection(d3.geoCentroid(d))[1])
+  //     .attr('font-size',d => (Math.exp(d3.geoArea(d)) * 2) +'px')
+  //     .text(d=>d.properties.NAME_AR);
 }
 
 //data fetching
@@ -130,7 +142,7 @@ Promise.all([
 
   var countries = countriesInfo;
 
-  console.log(countries);
+  // console.log(countries);
   
   draw(-10, countries, borders)
 })
