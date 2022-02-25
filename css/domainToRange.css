@@ -11,9 +11,14 @@ input:invalid {
 }
 
 .two-cols{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap:1rem;
+}
+
+.two-cols > div {
+    width: clamp(300px , 100%, 49%);
 }
 
 .container{
