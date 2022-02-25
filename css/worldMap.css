@@ -53,6 +53,7 @@ text {
     position: absolute;
     white-space: pre-wrap;
     text-align: center;
+    opacity: 0.8;
 }
 
 .hidden {
