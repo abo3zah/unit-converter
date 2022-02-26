@@ -39,19 +39,19 @@ $(document).ready(function () {
 
             if (value < 18.5) {
 
-                value += " - <span class='px-2' style='background-color:yellow;color:black'>نقص في الوزن</span>";
+                value += " - <span style='background-color:yellow;color:black;padding:.3rem .5rem'>نقص في الوزن</span>";
                 
             } else if (value < 25) {
 
-                value += " - <span class='px-2' style='background-color:green;color:white'>وزن صحي</span>";                
+                value += " - <span style='background-color:green;color:white;padding:.3rem .5rem'>وزن صحي</span>";                
 
             } else if (value < 30) {
 
-                value += " - <span class='px-2' style='background-color:red;color:white'>وزن زائد</span>";
+                value += " - <span style='background-color:red;color:white;padding:.3rem .5rem'>وزن زائد</span>";
 
             } else {
 
-                value += " - <span class='px-2' style='background-color:brown;color:white'>سمنة</span>";
+                value += " - <span style='background-color:brown;color:white;padding:.3rem .5rem'>سمنة</span>";
 
             }
 
