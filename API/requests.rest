@@ -1,1 +1,1 @@
-http://api.aladhan.com/v1/gToH?date=07-12-2014
+http://api.aladhan.com/v1/gToH?date=04-03-2022

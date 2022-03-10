@@ -1,4 +1,4 @@
-*:not(footer span):not(text) {
+*:not(footer span):not(text):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
     font-size: large;
 }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir='rtl' lang='ar'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <title>التقويم</title>
+    <link rel="icon" href="icon.ico">
+
+    <link rel="stylesheet" href="css\variables.css">
+    <link rel="stylesheet" href="css\header.css">
+    <link rel="stylesheet" href="css\calendar.css">
+
+    <script src='https://www.w3schools.com/lib/w3.js'></script>
+    <script src="https://d3js.org/d3.v6.min.js" defer></script>
+    <script src="js\moment.js" defer></script>
+    <script src="js\moment-hijri.js" defer></script>
+    <script src='js\calendar.js' defer></script>
+    <script src="data\vacation.js"></script>
+</head>
+
+<body>
+
+    <div class="page">
+        <div w3-include-html='header.htm'></div>
+
+        <!-- Main -->
+        <div class="mainBox">
+            <h2></h2>
+            <div class="year">
+                <div class="month" data-month="1">
+                    <div class="monthHeader"></div>
+                </div>
+                <div class="month" data-month="2">
+                    <div class="monthHeader"></div>
+                </div>
+                <div class="month" data-month="3">
+                    <div class="monthHeader"></div>
+                </div>
+                <div class="month" data-month="4">
+                    <div class="monthHeader"></div>
+                </div>
+                <div class="month" data-month="5">
+                    <div class="monthHeader"></div>
+                </div>
+                <div class="month" data-month="6">
+                    <div class="monthHeader"></div>
+                </div>
+                <div class="month" data-month="7">
+                    <div class="monthHeader"></div>
+                </div>
+                <div class="month" data-month="8">
+                    <div class="monthHeader"></div>
+                </div>
+                <div class="month" data-month="9">
+                    <div class="monthHeader"></div>
+                </div>
+                <div class="month" data-month="10">
+                    <div class="monthHeader"></div>
+                </div>
+                <div class="month" data-month="11">
+                    <div class="monthHeader"></div>
+                </div>
+                <div class="month" data-month="12">
+                    <div class="monthHeader"></div>
+                </div>
+            </div>
+        </div>
+
+        <div w3-include-html='footer.htm'></div>
+    </div>
+
+</body>
+<script>
+    w3.includeHTML();
+</script>
+
+</html>
