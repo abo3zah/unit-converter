@@ -9,7 +9,8 @@ const getDatesBetween = (startDate, endDate, includeEndDate) => {
     return dates;
 };
 
-const createArr = (num) => {
+const createArr = (m) => {
+    let num = m.day();
     var arr = [];
     if (num == 0){return arr};
     for (let i = 0; i < num-1; i++) {
@@ -39,7 +40,6 @@ var map = [
 
 const weekday = ["أ","ث","ث","ر","خ","ج","س"];
 const MonthName = ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أوكتوبر","نوفمبر","ديسمبر"];
-const hMonthName = ["محرم","صفر","ربيع أول","ربيع ثاني","جمادى أول","جمادى ثاني","رجب","شعبان","رمضان","شوال","ذو القعدة","ذو الحجة"]
 const hColors = ['#32CD32', '#0000CD', '#FFA500'];
 
 for (let i = 0; i <= 11; i++) {
@@ -55,7 +55,7 @@ for (let i = 0; i <= 11; i++) {
     let hMonths = [];
     d3.select('[data-month="'+ (i+1) +'"]')
         .selectAll('div.day')
-            .data(d3.merge([createArr((new Date(selectedYear + "-" + (i+1) + "-01")).getDay()),d3.filter(dates,d => d.getMonth() == i)]))
+            .data(d3.merge([createArr(moment(selectedYear + "-" + (i+1) + "-01")),d3.filter(dates,d => d.getMonth() == i)]))
             .enter()
             .append('div')
                 .attr('class', (d)=> {
@@ -66,7 +66,7 @@ for (let i = 0; i <= 11; i++) {
 
                     classes = 'day ';
 
-                    m == moment()? classes+="today ":null;
+                    m.isSame(moment(),'day')? classes+="today ":null;
                     m.day()>4? classes+="weekEnd " : classes+='weekDay ';
                     m.day()==0? classes+="sundays " : null;
                     m.date()==1? classes+="startOfMonth " : null;
@@ -83,7 +83,7 @@ for (let i = 0; i <= 11; i++) {
 
                     let m = moment(d);
                     for (let z = 0; z < vacationData.length; z++){
-                        if(m.isBetween(vacationData[z].start, vacationData[z].end, undefined, '[]')){
+                        if(m.isBetween(vacationData[z].start, moment(vacationData[z].end).add(1,'days'))){
                             styleString = vacationData[z].style;
                         }
                     }
