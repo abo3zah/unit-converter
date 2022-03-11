@@ -61,12 +61,16 @@ for (let i = 0; i <= 11; i++) {
                 .attr('class', (d)=> {
                     if (d == " "){ return "empty"};
                     if (d =="*") { return "lastEmpty"};
+
+                    let m = moment(d);
+
                     classes = 'day ';
-                    d.toDateString() == new Date().toDateString()? classes+="today ":null;
-                    d.getDay()>4? classes+="weekEnd " : classes+='weekDay ';
-                    d.getDay()==0? classes+="sundays " : null;
-                    d.getDate()==1? classes+="startOfMonth " : null;
-                    let m = moment(d.toISOString().slice(0,10), 'YYYY/MM/DD');
+
+                    m == moment()? classes+="today ":null;
+                    m.day()>4? classes+="weekEnd " : classes+='weekDay ';
+                    m.day()==0? classes+="sundays " : null;
+                    m.date()==1? classes+="startOfMonth " : null;
+                    
                     m.format('iMM')==9?classes+="ramadan " : null;
                     return classes;
                 })
@@ -77,7 +81,7 @@ for (let i = 0; i <= 11; i++) {
 
                     let styleString = ""
 
-                    let m = moment(d.toISOString().slice(0,10), 'YYYY/MM/DD');
+                    let m = moment(d);
                     for (let z = 0; z < vacationData.length; z++){
                         if(m.isBetween(vacationData[z].start, vacationData[z].end, undefined, '[]')){
                             styleString = vacationData[z].style;
@@ -91,8 +95,8 @@ for (let i = 0; i <= 11; i++) {
                     if (d == " " || d == "*"){
                         text = " ";
                     }else{
-                        text = d.getDate();
-                        let m = moment(d.toISOString().slice(0,10), 'YYYY/MM/DD');
+                        let m = moment(d);
+                        text = m.date();
                         hMonths.includes(m.format('iMMM'))?null: hMonths.push(m.format('iMMM'));
                         hYear.includes(m.format('iYYYY'))?null: hYear.push(m.format('iYYYY'));
                     }
