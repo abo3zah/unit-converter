@@ -134,19 +134,5 @@ for (let i = 0; i <= 11; i++) {
         })
 }
 
-    // d3.select('[data-month="'+ (i+1) +'"] div.monthHeader')
-    //     .text(() => {
-    //         return MonthName[i];
-    //     })
-    //     .append('span')
-    //         .html(() => {
-    //             let text = '';
-    //             for (let j = 0; j<hMonths.length;j++){
-    //                 text += '<span style="color:'+ hColors[j] + '">'+ hMonths[j] +'</span>'
-    //                 j == (hMonths.length - 1) ? null: text += ' - '
-    //             }
-    //             return text;
-    //         })
-
-// let str = 'تقويم سنة ' + selectedYear + ' (' + replaceDigits(hYear.reduce((p,c)=> p + " - " + c)) + ")";
-// d3.select('.mainBox > h2').html(str);
+let str = 'تقويم سنة ' + selectedYear + ' (' + replaceDigits(hYear.reduce((p,c)=> p + " - " + c)) + ")";
+d3.select('.mainBox > h2').html(str);
