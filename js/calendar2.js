@@ -56,6 +56,7 @@ var map = [
 const weekday = ["أ","ث","ث","ر","خ","ج","س"];
 const MonthName = ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أوكتوبر","نوفمبر","ديسمبر"];
 const hColors = ['#32CD32', '#0000CD', '#FFA500'];
+const vacationDetails = Array.from(d3.group(vacationData, d => d.name), ([key, value]) => ({key, value}));
 
 for (let i = 0; i <= 11; i++) {
 
@@ -97,6 +98,7 @@ for (let i = 0; i <= 11; i++) {
                 let styleString = "";
 
                 for (let z = 0; z < vacationData.length; z++){
+
                     if(d.isBetween(vacationData[z].start, moment(vacationData[z].end),undefined, '[]')){
                         styleString = vacationData[z].style;
                     }
@@ -136,3 +138,12 @@ for (let i = 0; i <= 11; i++) {
 
 let str = 'تقويم سنة ' + selectedYear + ' (' + replaceDigits(hYear.reduce((p,c)=> p + " - " + c)) + ")";
 d3.select('.mainBox > h2').html(str);
+
+legend = d3.select('.legend');
+
+vacationDetails.push({
+    'key':'رمضان',
+    'value':[{
+        style: 'background-color:rgb(181, 224, 181);',
+    }]
+})

@@ -30,6 +30,10 @@
     padding: 0.3rem;
 }
 
+.day{
+    border: 1px solid black;
+}
+
 .monthHeader {
     font-size: 0.8rem;
 }
@@ -85,6 +89,17 @@
 .today {
     color: white;
     background-color:lightslategrey;
+}
+
+.legend{
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.legend *{
+    flex-grow: 1;
 }
 
 @media screen and (max-width: 1400px) {
