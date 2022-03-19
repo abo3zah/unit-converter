@@ -94,8 +94,12 @@
 .legend{
     grid-column: 1 / -1;
     display: flex;
+    gap: 0.5rem;
     justify-content: center;
-    align-content: center;
+    align-content:center;
+    padding: 0rem 1rem;
+    text-align: center;
+    flex-wrap: wrap;
 }
 
 .legend *{

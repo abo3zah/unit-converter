@@ -139,11 +139,17 @@ for (let i = 0; i <= 11; i++) {
 let str = 'تقويم سنة ' + selectedYear + ' (' + replaceDigits(hYear.reduce((p,c)=> p + " - " + c)) + ")";
 d3.select('.mainBox > h2').html(str);
 
-legend = d3.select('.legend');
-
 vacationDetails.push({
     'key':'رمضان',
     'value':[{
         style: 'background-color:rgb(181, 224, 181);',
     }]
 })
+
+legend = d3.select('.legend')
+            .selectAll('div')
+                .data(vacationDetails)
+                .enter()
+                .append('div')
+                    .html((d)=>d.key)
+                    .attr('style',(d)=>d.value[0].style + ';border:1px solid black')
