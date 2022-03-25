@@ -8,17 +8,16 @@
 
 .mainBox > h2 {
     text-align: center;
-    font-size: 2rem;;
+    font-size: 1.2rem;;
     margin: .3rem;
 }
 
 .inputYear {
     text-align: center;
     background-color: antiquewhite;
-    font-size: 2rem;
+    font-size: 1.2rem;
     margin: 0;
     padding: 0;
-    width: 10%;
 }
 
 .year {
