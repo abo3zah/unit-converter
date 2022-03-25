@@ -50,7 +50,7 @@ vacationData = [
     {
         "name":"إجازة مدرسية",
         "start": "01-July-2022",
-        "end": "01-July-2022",
+        "end": "27-Aug-2022",
         "style": "background-color:yellow;color:black;",
     },
     {

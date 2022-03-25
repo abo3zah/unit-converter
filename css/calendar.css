@@ -6,13 +6,19 @@
     align-content:center;
 }
 
-.mainBox > *:first-child {
+.mainBox > h2 {
     text-align: center;
     font-size: 2rem;;
-    background: linear-gradient( black, gray);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     margin: .3rem;
+}
+
+.inputYear {
+    text-align: center;
+    background-color: antiquewhite;
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+    width: 10%;
 }
 
 .year {
@@ -25,37 +31,28 @@
 }
 
 .month {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    justify-content: center;
-    align-content:flex-start;
+    width: 100%;
+    table-layout: fixed;
     border: 1px solid black;
     background-color: #e5e5f7;
     border-radius: 5px;
     padding: 0.3rem;
 }
 
+.day{
+    border: 1px solid black;
+}
+
 .monthHeader {
-    grid-column: 1 / span 7;
-    padding: .2rem 0;
-    text-align: right;
     font-size: 0.8rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-    padding-right: 0.5rem;
-
 }
 
-.monthHeader > span {
-    position: absolute;
-    left: 0.5rem;
-    /* top:0.5rem; */
-    font-weight: bold;
+.monthHeader th:first-child {
+    text-align: right;
 }
 
-.monthHeader span {
-    font-size: .8rem;
-    text-shadow: 0.2px 0.2px black;
+.monthHeader th:last-child {
+    text-align: left;
 }
 
 .month > h3{
@@ -71,22 +68,14 @@
     color: aliceblue;
 }
 
-.lastEmpty {
-    border-left: 1px solid black;
-}
-
-.sundays{
-    border-right: 1px solid black;
-}
-
 .day {
-    position: relative ;
+    position: relative;
 }
 
-.day > span > span {
+.day > span {
     position: absolute;
     left: 0.1rem;
-    top:0.1rem;
+    top:0.01rem;
     font-size: .8rem;
     text-shadow: 0.2px 0.2px black;
 }
@@ -95,8 +84,6 @@
     text-align: right;
     font-size: .8rem;
     padding-right: 0.1rem;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
     background-color: white;
 }
 
@@ -104,24 +91,23 @@
     background-color: lightcyan;
 }
 
-/* .weekDay:hover, .weekEnd:hover {
-    background: none;
-    background-color: lightslategray;
-    color: white;
-    cursor: pointer;
-} */
-
-.empty, .lastEmpty {
-    border-bottom: 1px solid black;
-}
-
 .ramadan{
     background-color: rgb(181, 224, 181);
 }
 
-.today {
-    color: white;
-    background-color:lightslategrey;
+.legend{
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-content:center;
+    padding: 0rem 1rem;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.legend *{
+    flex-grow: 1;
 }
 
 @media screen and (max-width: 1400px) {
