@@ -59,6 +59,7 @@ const map = [
 
 function mainScript(){
 
+
     selectedYear = document.getElementById("selectedYear").value;
     var dates = generateYearStructure(selectedYear);
     var hYear = [];
@@ -157,7 +158,7 @@ function mainScript(){
             
     }
 
-    let str = 'تقويم سنة <input type="number" id="selectedYear" class ="inputYear" value=' + selectedYear + '></input> (' + replaceDigits(hYear.reduce((p, c) => p + " - " + c)) + ")";
+    let str = 'تقويم سنة <input min='+ moment().year() +' onchange="mainScript()" type="number" id="selectedYear" class ="inputYear" value=' + selectedYear + '></input> (' + replaceDigits(hYear.reduce((p, c) => p + " - " + c)) + ")";
     d3.select('.mainBox > h2').html(str);
 
     vacationDetails.push({
@@ -175,7 +176,6 @@ function mainScript(){
         .html((d) => d.key)
         .attr('style', (d) => d.value[0].style + ';border:1px solid black')
 
-    document.getElementById("selectedYear").addEventListener("change", mainScript);
 }
 
 document.getElementById("selectedYear").value = moment().year();
