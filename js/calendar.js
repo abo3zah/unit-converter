@@ -59,7 +59,7 @@ const map = [
 
 function mainScript(){
 
-
+    if (document.getElementById("selectedYear").value < 1938 || document.getElementById("selectedYear").value > 2076){return null} 
     selectedYear = document.getElementById("selectedYear").value;
     var dates = generateYearStructure(selectedYear);
     var hYear = [];
@@ -158,8 +158,8 @@ function mainScript(){
             
     }
 
-    let str = 'تقويم سنة <input min='+ moment().year() +' onchange="mainScript()" type="number" id="selectedYear" class ="inputYear" value=' + selectedYear + '></input> (' + replaceDigits(hYear.reduce((p, c) => p + " - " + c)) + ")";
-    d3.select('.mainBox > h2').html(str);
+    let str = '(' + replaceDigits(hYear.reduce((p, c) => p + " - " + c)) + ")";
+    d3.select('#hijriYear').html(str);
 
     vacationDetails.push({
         'key': 'رمضان',
@@ -177,7 +177,5 @@ function mainScript(){
         .attr('style', (d) => d.value[0].style + ';border:1px solid black')
 
 }
-
-document.getElementById("selectedYear").value = moment().year();
 
 mainScript();
