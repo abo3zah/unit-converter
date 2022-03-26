@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html dir='rtl' lang='ar'>
+<head>
+
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <title>الذكاء الصناعي</title>
+    <link rel="icon" href="icon.ico">
+
+    <link rel="stylesheet" href="css\variables.css">
+    <link rel="stylesheet" href="css\header.css">
+    <link rel="stylesheet" href="css\ai.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/knn-classifier"></script>
+    <script src='https://www.w3schools.com/lib/w3.js'></script>
+    <script src='js\ai.js' defer></script>
+    <script src="https://d3js.org/d3.v6.min.js" defer></script>
+    <!-- <script src="//unpkg.com/brain.js" defer></script> -->
+
+    <style>
+        * {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        a:hover {
+            background-color: hsl(0, 0%, 30%);
+        }
+
+        input:invalid {
+            background-color: brown;
+            color: white;
+        }
+
+        #drawingArea text {
+            fill: black;
+        }
+
+        #InputGroup label{
+            background-color: hsl(200,100%,40%);
+            color:hsl(0,0%,100%)
+        }
+
+        #dropDownGroup label, #filePathDiv label{
+            background-color: hsl(0,0%,40%);
+            color:hsl(0,0%,100%)
+        }
+
+        #filePathDiv{
+            padding:0px 16px 0px 16px;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr 2fr);
+            grid-gap: 2px;
+        }
+
+        #dropDownGroup{
+            padding:0px 16px 0px 16px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 2px;
+        }
+
+        #InputGroup{
+            padding:0px 16px 0px 16px;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-gap: 2px;
+        }
+
+        #drawingArea{
+            padding:0px 16px 0px 16px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="page">
+        <div w3-include-html='header.htm'></div>
+
+        <!-- Main -->
+        <div class="mainBox">
+            <div id="demo"></div>
+        </div>
+
+        <div w3-include-html='footer.htm'></div>
+    </div>
+
+</body>
+<script>
+    w3.includeHTML();
+</script>
+</html>
