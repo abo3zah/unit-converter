@@ -79,14 +79,7 @@ async function trainModel(model, inputs, labels) {
     return await model.fit(inputs, labels, {
         epochs,
         shuffle: true,
-        callbacks: tfvis.show.fitCallbacks({
-                name: 'Training Performance'
-            },
-            ['loss', 'MSE'], {
-                height: 200,
-                callbacks: ['onEpochEnd']
-            }
-        )
+        callbacks: console.log('Start Training...')
     });
 }
 
@@ -108,22 +101,35 @@ async function run() {
         y: d.PW
     }));
 
-    tfvis.render.scatterplot(
-        {name: "IRIS Flowers"}, {
-            values: values,
-            series: ['IRIS Flowers']
-        }, {
-            xLabel: 'Petal Length',
-            yLabel: 'Petal Width',
-            zoomToFit: true
+    // tfvis.render.scatterplot(
+    //     {name: "IRIS Flowers"}, {
+    //         values: values,
+    //         series: ['IRIS Flowers']
+    //     }, {
+    //         xLabel: 'Petal Length',
+    //         yLabel: 'Petal Width',
+    //         zoomToFit: true
+    //     }
+    // );
+
+    new Chart("myChart", {
+        type: "scatter",
+        data: {
+          datasets: [{
+            pointRadius: 4,
+            pointBackgroundColor: "rgb(0,0,255)",
+            data: values
+          }]
+        },
+        options: {
+          legend: {display: false},
+          maintainAspectRatio: false,
+          responsive:false
         }
-    );
+      });
 
     // Create the model
     const model = createModel();
-    tfvis.show.modelSummary({
-        name: 'Model Summary'
-    }, model);
 
     // Convert the data to a form we can use for training.
     const tensorData = convertToTensor(data);

@@ -7,13 +7,14 @@
 
     <title>الذكاء الصناعي</title>
     <link rel="icon" href="icon.ico">
-
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css\variables.css">
     <link rel="stylesheet" href="css\header.css">
     <link rel="stylesheet" href="css\ai.css">
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/knn-classifier"></script>
     <script src='https://www.w3schools.com/lib/w3.js'></script>
     <script src='js\ai.js' defer></script>
@@ -77,18 +78,23 @@
 </head>
 <body>
 
+    
     <div class="page">
         <div w3-include-html='header.htm'></div>
-
+        
         <!-- Main -->
-        <div class="mainBox">
-            <div id="demo"></div>
+        <div class="flex flex-col align-center">
+
+            <h2 class="text-white bg-blue-500 text-center m-3">Hello</h2>
+
+            <canvas id="myChart" class="w-1/3 h-1/2 m-2"></canvas>
         </div>
 
         <div w3-include-html='footer.htm'></div>
     </div>
 
 </body>
+
 <script>
     w3.includeHTML();
 </script>
