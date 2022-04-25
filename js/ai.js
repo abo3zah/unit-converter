@@ -45,9 +45,21 @@ async function setup() {
      //train model
      trainmodel()
 
+     generateRandomValues();
+
+     predictType()
+
 }
 
-async function preparingForPloting() {
+function generateRandomValues() {
+     let PL = round(random(0,7),2);
+     select('#PL').value(PL);
+
+     let PW = round(random(0,3),2);
+     select('#PW').value(PW);
+}
+
+async function preparingForPloting(predictedValue = undefined) {
 
      tf.tidy(() => {
           //extract unique classes
@@ -64,6 +76,10 @@ async function preparingForPloting() {
                     name: uniqueClass[index],
                     type: 'scatter',
                };
+          }
+
+          if (predictedValue != undefined){
+               values.push(predictedValue)
           }
 
           // Define Layout
@@ -258,7 +274,27 @@ async function complieModel() {
      });
 }
 
-async function predictType(arr) {
+async function predictType() {
+
+     PL = +select('#PL').value();
+     PW = +select('#PW').value();
+
+     arr = [[PL, PW]]
+
+     select('#PLValue').html(PL)
+     select('#PWValue').html(PW)
+
+     preparingForPloting({
+          x: [PL],
+          y: [PW],
+          mode: "markers",
+          name: 'Predicted Flower',
+          type: 'scatter',
+          marker:{
+               size:10
+          },
+     })
+
      tf.tidy(() => {
 
           let yPred = tf.tensor2d(arr);
@@ -267,6 +303,8 @@ async function predictType(arr) {
 
           document.getElementById('result').innerText = uniqueClass[result]
      })
+
+     generateRandomValues();
 }
 
 async function saveModelFiles() {
